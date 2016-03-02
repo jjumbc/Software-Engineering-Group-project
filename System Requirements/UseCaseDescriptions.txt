@@ -6,17 +6,15 @@ Use Cases
 4.	Search Jobs - Worker
 5.	Select Job - Worker
 6.	Reviewing a Customer or Worker - Freeze the target account if average rating is too low
-7.	Challenging a Review - Customer or Worker
-8.	Admin Review Access - admin only
-9.	View History - Customer and Worker
-10.	Change Between customer and worker - Both
-11.	Change Account info - All
-12.	Job approval - Customer approves request by Worker to do job, sends address and contact information
-13.	Job Finalization - after approval by customer, worker recieves the full address and contact information
-14.	Report / File complaint - Customer or Worker
-15.	Complaint Review - Admin
-16.	Unfreeze Account - Admin
-17.	Freeze Account - Automatic when review average drops too low
-18.	Sort by rating or area code
-19.	Marking a job as complete - Happens on both Customer and Worker side, and initiates review process
-20.	Customer views current job listings
+7.	Contacting an Admin - Customer or Worker
+8.	Admin Access - admin only
+9.	View Transaction History - All
+10.	Change Account info - All
+11.	Job approval - Customer approves request by Worker to do job, sends address and contact information
+12.	Job Finalization - after approval by customer, worker recieves the full address and contact information
+13.	Report / File complaint - Customer or Worker
+14.	Complaint Review - Admin
+15.	Unfreeze Account - Admin
+16.	Freeze Account - Automatic when review average drops too low / Admin
+17.	Marking a job as complete - Happens on both Customer and Worker side, and initiates review process
+18.	Customer views current job listings
