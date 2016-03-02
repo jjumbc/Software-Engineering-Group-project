@@ -1,0 +1,16 @@
+Use Cases
+
+1.	Register - user and admin accounts
+2.	Login
+3.	Create Job - Customer
+4.	Select Job - Worker
+5.	Reviewing a Customer or Worker - Freeze the target account if average rating is too low
+6.	Challenging a Review - Customer or Worker
+7.	Admin Review Access - admin only
+8.	View History - Customer and Worker
+9.	Change Between customer and worker
+10.	Change Account info - All
+11.	Job approval - Customer approves request by Worker to do job, sends address and contact information
+12.	Report / File complaint - Customer or Worker
+13.	Complaint Review - Admin
+14.	Unfreeze Account - Admin
