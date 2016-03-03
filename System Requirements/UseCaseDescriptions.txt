@@ -13,7 +13,7 @@ Use Cases
 11.	Job approval - Customer approves request by Worker to do job, sends address and contact information
 12.	Job Finalization - after approval by customer, worker recieves the full address and contact information
 13.	Report / File complaint - Customer or Worker
-14.	Complaint Review - Admin
+14.	Message / Complaint Review - Admin
 15.	Unfreeze Account - Admin
 16.	Freeze Account - Automatic when review average drops too low / Admin
 17.	Marking a job as complete - Happens on both Customer and Worker side, and initiates review process
