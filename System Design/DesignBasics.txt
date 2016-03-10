@@ -1,0 +1,20 @@
+Information Needed for Each Part:
+Store in different tables on server?
+
+Users
+- Email
+- Unique User ID
+- Password
+- Street Address
+- ZIP Code
+- State
+- Picture
+
+Jobs
+- Start date (collected automatically)
+- Start time (collected automatically)
+- Description (Shoveling, Gutter Cleaning, Mowing, etc)
+- ZIP Code
+- City
+- Address (only revealed after full acceptance)
+- 
