@@ -1,0 +1,63 @@
+* {
+    box-sizing: border-box;
+}
+
+#head {
+    padding: 15px;
+	align: center;
+	text-align: center;
+}
+
+input:focus{
+	border-color: #D02930;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type=submit] {
+    width: 20%;
+    background-color: #D02930;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #DB000A;
+}
+
+#login {
+    border-radius: 5px;
+	border: 2px solid #ffe493;
+    background-color: #F2F2F2;
+    padding: 40px;
+	margin: 50px 30% 0px 30%;
+}
+
+#box {
+    border: 2px solid gray;
+}
+
+#box:focus{
+    outline:none;
+    border-color: #D02930;
+}
