@@ -1,7 +1,7 @@
 # Section-1-Team-1
 Section-1-Team-1 Repository
 
-This repository is currently organized into 6 folders:
+This repository is currently organized into 8 folders:
 	
 	1.	Code Inspection Report
 			
