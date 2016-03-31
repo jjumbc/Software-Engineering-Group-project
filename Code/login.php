@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
+	<head>
 		<title>Hello!</title>
 		<link rel="stylesheet" type="text/css" href="styles.css">
 		<link rel="icon" href="fav.png" type="image/png" sizes="16x16">
-<meta http-equiv="refresh" content="3;url=http://userpages.umbc.edu/~justus2/handyman/home.html" />
-</head>
-<body background="bg.png">
+	</head>
+<body background="bg.jpg">
 
 <div id="login">
-Welcome <?php echo $_POST["user"]; ?><br>
+<?php
+	if ($_POST["user"] == "handyman" && $_POST["pass"] == "handyman") {
+		echo "Welcome ";
+		echo $_POST["user"];
+		echo "!<br>";
+	}
+	else {
+		echo "User not found, redirecting...<br>";
+	}
+?>
 <br>
 <br>
-Redirecting in 3 seconds...
+<br>
 </div>
 </body>
 </html>

@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: "Tahoma", Geneva, sans-serif;
 }
 
 #head {
@@ -8,20 +9,20 @@
 	text-align: center;
 }
 
+body {
+    background: url("bg.jpg") no-repeat top center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
 input:focus{
 	border-color: #D02930;
 }
 
-input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-input[type=password], select {
+input, select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -60,4 +61,38 @@ input[type=submit]:hover {
 #box:focus{
     outline:none;
     border-color: #D02930;
+}
+
+#bglayer {
+	border: 2px solid #ffe493;
+    background-color: #F2F2F2;
+    padding: 40px;
+    border-radius: 5px;
+    margin: 20px 200px 0px 200px;
+}
+
+#content{
+    border-radius: 5px;
+    border: 2px solid #ffe493;
+    background-color: #d3d3d3;
+    padding: 40px;
+    float: left;
+    text-align: left;
+    width: 100%;
+}
+
+#link {
+    width: 20%;
+    background-color: #D02930;
+    color: white;
+    padding: 14px 20px;
+    margin: 20px 15px 0px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
+.logo {
+    float: left;
 }
