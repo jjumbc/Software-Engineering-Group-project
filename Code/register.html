@@ -11,15 +11,15 @@
 		<img src="site_logo.png" alt="Logo" width="500"></div>
 		<div id="login">
 		<form action="register.php" method="post">
-			Name<br><input type="text" id="box" style="width: 49%" name="first" pattern="[A-Za-z-']+" required autofocus>
-			<input type="text" id="box" style="width: 49%" name="last" pattern="[A-Za-z-']+" required>
+			Username<br><input type="text" id="box" name="user" required><br><br>
+			Password<br><input type="password" id="box" name="pass" required><br><br>
+			Name<br><input type="text" id="box" style="width: 49%" name="first" pattern="[A-Za-z-']+" required>
+			<input type="text" id="box" style="width: 50%" name="last" pattern="[A-Za-z-']+" required>
 			<br><br>
 			Address<br><input type="text" id="box" name="address1" required><br>
-			<input type="text" id="box" name="address2" required><br><br>
-			City/Zip<br><input type="text" id="box" style="width: 69%" name="city" required>
-			<input type="text" id="box" style="width: 29%" name="zip" required><br><br>
-			State<br>
-			<select id="box" style="width: 69%" name="state">
+			<input type="text" id="box" name="address2"><br><br>
+			City/State<br><input type="text" id="box" style="width: 69%" name="city" required>
+			<select id="box" style="width: 30%" name="state">
 				<option value="AL">Alabama</option>
 				<option value="AK">Alaska</option>
 				<option value="AZ">Arizona</option>
@@ -71,7 +71,8 @@
 				<option value="WV">West Virginia</option>
 				<option value="WI">Wisconsin</option>
 				<option value="WY">Wyoming</option>
-			</select><br><br>		
+			</select><br><br>
+			Zip<br><input type="text" id="box" name="zip" required><br><br>
 			Email<br><input type="email" id="box" name="email" required><br><br>
 			Phone #<br><input type="tel" id="box" name="tel" required><br><br>
 			<input type="submit" value="Submit" id="submit">

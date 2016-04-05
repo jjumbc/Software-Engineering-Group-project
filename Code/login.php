@@ -9,14 +9,28 @@
 
 <div id="login">
 <?php
-	if ($_POST["user"] == "handyman" && $_POST["pass"] == "handyman") {
-		echo "Welcome ";
-		echo $_POST["user"];
-		echo "!<br>";
+	$username = $_POST["user"];
+	$password = $_POST["pass"];
+	require 'link.php';
+
+	$qry="SELECT * FROM user_list WHERE (username='$username' OR email='$username') AND password='$password'";
+	$result = mysql_query($qry);
+	if ($result) {
+		$count = mysql_num_rows($result);
+		if ($count == 1) {
+			echo "Welcome ";
+			echo $username;
+			echo "!<br>";
+		}
+		else {
+			echo "Login failed";
+		}
 	}
 	else {
-		echo "User not found, redirecting...<br>";
+		echo "Login failed";
 	}
+
+	mysql_close($link);
 ?>
 <br>
 <br>
