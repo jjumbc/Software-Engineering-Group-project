@@ -1,16 +1,20 @@
 type this in your command line in vagrant in the Code folder of our git repository:
-
-mysql -u root -p VeriHandyDB < VeriHandyDB.sql
 ****** the password when prompted is [secret] without brackets *******
+
+mysql -u root -p
+password: secret
+create database VeriHandyDB ;
+quit ;
+mysql -u root -p VeriHandyDB < VeriHandyDB.sql
 
 ------------------------------------------------
 thats it! to view the tables in the DB do this:
 
 mysql -u root -p
-***** type in the password again ******
-show databases;
-use VeriHandyDB;
-show tables;
+password: secret
+show databases ;
+use VeriHandyDB ;
+show tables ;
 
 ------------------------------------------------
 to show the layout of the tables do:
