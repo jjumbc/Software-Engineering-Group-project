@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `Jobs`;
 CREATE TABLE `Jobs` (
   `JobID` int(11) NOT NULL AUTO_INCREMENT,
   `CustomerID` int(11) NOT NULL,
-  `WorkerID` int(11) NOT NULL,
+  `WorkerID` int(11) DEFAULT NULL,
   `Description` varchar(512) NOT NULL,
   `Price` decimal(12,2) NOT NULL,
   `Date` date NOT NULL,
@@ -56,9 +56,9 @@ DROP TABLE IF EXISTS `Reviews`;
 CREATE TABLE `Reviews` (
   `JobID` int(11) NOT NULL,
   `CustomerRating` tinyint(4) DEFAULT NULL,
-  `CustomerReview` varchar(256) DEFAULT NULL,
+  `CustomerReview` varchar(512) DEFAULT NULL,
   `WorkerRating` tinyint(4) DEFAULT NULL,
-  `WorkerReview` varchar(256) DEFAULT NULL,
+  `WorkerReview` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`JobID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -88,8 +88,8 @@ CREATE TABLE `UserInfo` (
   `City` varchar(20) NOT NULL,
   `State` varchar(20) NOT NULL,
   `ZipCode` int(11) NOT NULL,
-  `EMail` varchar(20) NOT NULL,
-  `PhoneNumber` int(11) DEFAULT NULL,
+  `Email` varchar(256) NOT NULL,
+  `Phonenumber` int(11) NOT NULL,
   PRIMARY KEY (`UserID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -137,4 +137,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-11  6:26:38
+-- Dump completed on 2016-04-13 18:11:00
