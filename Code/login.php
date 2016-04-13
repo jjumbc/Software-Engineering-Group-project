@@ -10,7 +10,7 @@
 <div id="login">
 <?php
 	$username = $_POST["user"];
-	$password = $_POST["pass"];
+	$password = md5($_POST["pass"]);
 	require 'link.php';
 
 	$qry="SELECT * FROM Users WHERE UserName='$username' AND Password='$password'";
