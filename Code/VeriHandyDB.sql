@@ -89,7 +89,7 @@ CREATE TABLE `UserInfo` (
   `State` varchar(20) NOT NULL,
   `ZipCode` int(11) NOT NULL,
   `Email` varchar(256) NOT NULL,
-  `Phonenumber` int(11) NOT NULL,
+  `Phonenumber` varchar(11) NOT NULL,
   PRIMARY KEY (`UserID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
