@@ -1,3 +1,7 @@
+<?php
+// Start the session
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,9 +13,9 @@
 
 <div id="login">
 <?php
-	//$userID = $__SESSION["UserID"];
+	$userID = $__SESSION["UserID"];
 	$userID = "1";
-   $address = $_POST["address"];
+	$address = $_POST["address"];
 	$zip = $_POST["zip"];
 	$date = $_POST["date"];
 	$time = $_POST["time"];
@@ -21,14 +25,15 @@
 
 	$qry = "INSERT INTO Jobs (CustomerID,Description,Price,Date,Time,Address,ZipCode) VALUES ('$userID', '$description', '$price', '$date', '$time', '$address', '$zip')";
 	$result = mysqli_query($link, $qry);
-   if ($result){
-   echo '<script type="text/javascript">
-   setTimeout(function(){window.location = "home.html"},2000)
-   </script>';
-}else{
-echo 'you dun fucked';
-}
-	
+	if ($result){
+	   echo '<script type="text/javascript">
+	   setTimeout(function(){window.location = "home.html"},2000)
+	   </script>';
+	}
+	else{
+		echo 'Job creation failed.';
+	}
+		
 	mysqli_close($link);
 ?>
 <br>
