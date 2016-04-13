@@ -13,24 +13,18 @@
 	$password = $_POST["pass"];
 	require 'link.php';
 
-	$qry="SELECT * FROM user_list WHERE (username='$username' OR email='$username') AND password='$password'";
-	$result = mysql_query($qry);
-	if ($result) {
-		$count = mysql_num_rows($result);
-		if ($count == 1) {
-			echo "Welcome ";
-			echo $username;
-			echo "!<br>";
-		}
-		else {
-			echo "Login failed";
-		}
+	$qry="SELECT * FROM Users WHERE UserName='$username' AND Password='$password'";
+	$result = mysqli_query($link, $qry);
+	if ($result && mysqli_num_rows($result) > 0) {
+		echo "Welcome ";
+		echo $username;
+		echo "!<br>";
 	}
 	else {
-		echo "Login failed";
+		echo 'Login failed. Please <a href="register.html">register</a>.';
 	}
 
-	mysql_close($link);
+	mysqli_close($link);
 ?>
 <br>
 <br>
