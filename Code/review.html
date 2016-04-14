@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>VeriHandy - Submit Review</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="styles.css">
+		<link rel="icon" href="fav.png" type="image/png" sizes="16x16">
+	</head>
+	<body>
+		<div id="head">
+		<img src="site_logo.png" alt="Logo" width="500"></div>
+		<div id="login">
+		<form action="review.php" method="post">
+			Star Rating<br><input type="number" min="1" max="5" step="1" id="box" name="starRating" required><br><br>
+			Feedback<br><input type="text" id="box" name="feedback"><br><br>
+			<input type="submit" value="Submit Review" id="submit">
+		</form>
+		</div>
+	</body>
+</html>
