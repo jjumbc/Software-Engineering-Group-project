@@ -5,7 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="styles.css">
 		<link rel="icon" href="fav.png" type="image/png" sizes="16x16">
 	</head>
-<body background="bg.jpg">
+<body>
 <?php
 if (!isset($_COOKIE["UserID"])) {
 	echo '<script type="text/javascript">window.location = "index.php"</script>';
@@ -16,7 +16,7 @@ if (!isset($_COOKIE["UserID"])) {
 		<a href="home.php"><img class="logo" src="site_logo_small.png" width="250"></a>
 		<a href="home.php"><div id="link">Profile Home</div></a>
 		<a href="joblist.php"><div id="link">Search Jobs</div></a>
-		<a href="createjob.html"><div id="link">Create New Job</div></a><br><br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="create_job.php"><div id="link">Create New Job</div></a><br><br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<?php
 			if (isset($_COOKIE["UserName"])) {
 				echo "Hello, ";
