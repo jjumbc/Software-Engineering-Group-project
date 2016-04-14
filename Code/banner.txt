@@ -8,9 +8,9 @@ Paste this under "<body background="bg.jpg">" to place the banner at the top of 
 					echo $_COOKIE["UserName"];
 				}
 			?>
-			<a href="home.php"><div id  ="link">Profile Home</div></a>
+			<a href="home.php"><div id="link">Profile Home</div></a>
 			<a href="joblist.php"><div id="link">Search Jobs</div></a>
 			<a href="createjob.html"><div id="link">Create New Job</div></a>
-			<div id="link"><form action="logout.php" method="post"><input type="submit" value="Log Out" id="submit"></form></div>
+			<div id="link"><form action="logout.php"><input type="submit" value="Log Out" id="submit"></form></div>
 		</div>
 	</div>

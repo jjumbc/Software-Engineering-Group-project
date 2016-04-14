@@ -17,6 +17,7 @@
 	if ($result && mysqli_num_rows($result) > 0) {
 		$row = mysqli_fetch_assoc($result);
 		setcookie("UserID", $row["UserID"], time() + (86400 * 30), "/");
+		setcookie("UserName", $row["UserName"], time() + (86400 * 30), "/");
 		echo "Welcome ";
 		echo $username;
 		echo "!<br>";

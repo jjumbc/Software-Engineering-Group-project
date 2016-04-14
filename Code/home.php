@@ -15,17 +15,20 @@ if (!isset($_COOKIE["UserID"])) {
 <h2>Open Jobs</h2>
 <?php
 	$userID = $_COOKIE["UserID"];
+	$count = 1;
 	require 'link.php';
 	
-	$qry="SELECT Description,Price,Date,Time,ZipCode FROM Jobs WHERE (CustomerID='$userID' OR WorkerID='$userID') AND Completed='0'";
+	$qry="SELECT JobID,Description,Price,Date,Time,ZipCode FROM Jobs WHERE (CustomerID='$userID' OR WorkerID='$userID') AND Completed='0'";
 	$result = mysqli_query($link, $qry);
 	if ($result && mysqli_num_rows($result) > 0) {
 		echo '<table cellpadding="0" cellspacing="0" class="db-table">';
-		echo '<tr><th>Job</th><th>Price</th><th>Date to Complete By</th><th>Location</th>';
-		echo '<th>Work On Job</th></tr>';
+		echo '<tr><th style="width: 50%;">Job</th><th>Price</th><th>Date to Complete By</th><th>Time of Day</th>';
+		echo '<th>Zip Code</th><th>Mark as Complete</th></tr>';
 		while($row = mysqli_fetch_row($result)) {
+				$button = "form" . $count;
 				echo '<tr>';
 				foreach($row as $key=>$value) {
+					if ($key != 0){
 						if ($key == 1) {
 							echo '<td>$',$value,'</td>';
 						}
@@ -33,6 +36,9 @@ if (!isset($_COOKIE["UserID"])) {
 							echo '<td>',$value,'</td>';
 						}
 				}
+				}
+				echo '<td><form name="$button" action="#"><input type="hidden" name="jobID" value="$row["JobID"]>
+				<input type="submit" name="mark" style="width: 100%;" value="Completed"></form></td>';
 				echo '</tr>';
 		}
 		echo '</table>';
