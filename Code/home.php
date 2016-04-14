@@ -107,7 +107,7 @@ if (!isset($_COOKIE["UserID"])) {
 						echo '</tr>';
 					}
 					else {
-						echo '<td><form action="review.php" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '"><input type="hidden" name="type" value="' . $type . '">
+						echo '<td><form action="review_form.php" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '"><input type="hidden" name="type" value="' . $type . '">
 						<input type="submit" name="submit" style="width: 100%;" value="Submit Review"></form></td>';
 						echo '</tr>';
 					}
