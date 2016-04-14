@@ -13,7 +13,7 @@ session_start();
 
 <div id="login">
 <?php
-	$userID = $__SESSION["UserID"];
+	$userID = $_SESSION["UserID"];
 	$address = $_POST["address"];
 	$zip = $_POST["zip"];
 	$date = $_POST["date"];
