@@ -31,8 +31,6 @@ if (!isset($_COOKIE["UserID"])) {
 <br>
 <br>
 
-		<div id="head">
-		<img src="site_logo.png" alt="Logo" width="500"></div>
 		<div id="login">
 		<form action="review_form.php" method="post">
 			Star Rating<br><input type="number" min="1" max="5" step="1" id="box" style="width: 50%;" name="starRating" required><br><br>
