@@ -31,10 +31,16 @@ if (!isset($_COOKIE["UserID"])) {
 <br>
 <br>
 
-		<div id="login">
+		<div id="bglayer">
 		<form action="review.php" method="post">
 			Star Rating<br><input type="number" min="1" max="5" step="1" id="box" style="width: 50%;" name="starRating" required><br><br>
-			Feedback<br><textarea id="box" style="height: 200px" name="description" maxlength="512" required></textarea><br><br>
+			Feedback<br><textarea id="box" style="height: 200px" name="feedback" maxlength="512" required></textarea><br><br>
+			<?php
+				$jobID = $_POST["jobID"];
+				$type = $_POST["type"];
+				echo '<input type="hidden" name="jobID" value="' . $jobID . '">';
+				echo '<input type="hidden" name="type" value="' . $type . '">';
+			?>
 			<input type="submit" value="Submit Review" id="submit">
 		</form>
 		</div>

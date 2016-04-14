@@ -30,19 +30,24 @@ if (!isset($_COOKIE["UserID"])) {
 <br>
 <br>
 
-<div id="login">
+<div id="bglayer">
 <?php
-	$jobID = $_COOKIE["JobID"];
-        setcookie("JobID", "", 1, "/");
 	require 'link.php';
+	$jobID = $_POST["jobID"];
    
-   $qry = "SELECT * FROM Reviews WHERE JobID = '$jobID'";
+   $qry = "SELECT * FROM Reviews WHERE JobID='$jobID'";
    $result = mysqli_query($link, $qry);
-   if($result){
-   echo '$result'
+   if($result && mysqli_num_rows($result) > 0) {
+	$row = mysqli_fetch_assoc($result);
+	$worker = $row["WorkerReview"];
+	$customer = $row["CustomerReview"];
+	echo "<h2>Customer Feedback</h2>";
+	echo $customer;
+	echo "<br><h2>Worker Feedback</h2>";
+	echo $worker;
    }
    else{
-   echo "Review hasnt been submitted for this job request yet."
+   echo "Review hasnt been submitted for this job request yet.";
    echo '<script type="text/javascript">
    setTimeout(function(){window.location = "home.html"},2000)
    </script>';

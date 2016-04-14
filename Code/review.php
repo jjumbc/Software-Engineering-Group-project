@@ -30,7 +30,7 @@ if (!isset($_COOKIE["UserID"])) {
 <br>
 <br>
 
-<div id="login">
+<div id="bglayer">
 <?php
 	$userID = $_COOKIE["UserID"];
 	$jobID = $_POST["jobID"];
