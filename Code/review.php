@@ -34,7 +34,7 @@ if (!isset($_COOKIE["UserID"])) {
 <?php
 	$userID = $_COOKIE["UserID"];
 	$jobID = $_POST["jobID"];
-        $type = $_POST["type"]
+    $type = $_POST["type"];
 	$rating = $_POST["starRating"];
 	$feedback = $_POST["feedback"];
 	
@@ -45,7 +45,7 @@ if (!isset($_COOKIE["UserID"])) {
 		$result = mysqli_query($link, $qry);
 	
 		if ($result){
-		    echo "Review Submitted!<br>"
+		    echo "Review Submitted!<br>";
 	   	    echo '<script type="text/javascript">
 	   	    setTimeout(function(){window.location = "home.html"},2000)
 	   	    </script>';
@@ -58,7 +58,7 @@ if (!isset($_COOKIE["UserID"])) {
 		$qry = "INSERT INTO Reviews (JobId,WorkerRating,WorkerReview) VALUES ('$jobID','$rating','$feedback')";
 		$result = mysqli_query($link, $qry);
 		if ($result){
-		    echo "Review Submitted!<br>"
+		    echo "Review Submitted!<br>";
 	   	    echo '<script type="text/javascript">
 	   	    setTimeout(function(){window.location = "home.html"},2000)
 	   	    </script>';

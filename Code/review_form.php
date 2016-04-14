@@ -32,7 +32,7 @@ if (!isset($_COOKIE["UserID"])) {
 <br>
 
 		<div id="login">
-		<form action="review_form.php" method="post">
+		<form action="review.php" method="post">
 			Star Rating<br><input type="number" min="1" max="5" step="1" id="box" style="width: 50%;" name="starRating" required><br><br>
 			Feedback<br><textarea id="box" style="height: 200px" name="description" maxlength="512" required></textarea><br><br>
 			<input type="submit" value="Submit Review" id="submit">
