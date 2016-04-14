@@ -13,14 +13,15 @@ if (!isset($_COOKIE["UserID"])) {
 ?>
 <div id="login">
 <?php
-	$jobID = 
 	$userID = $_COOKIE["UserID"];
+	$jobID = $_POST["jobID"];
+        $type = $_POST["type"]
 	$rating = $_POST["starRating"];
 	$feedback = $_POST["feedback"];
 	
 	require 'link.php';
 
-	if( USER IS THE CUSTOMER ){
+	if($type == "customer"){
 		$qry = "INSERT INTO Reviews (JobId,CustomerRating,CustomerReview) VALUES ('$jobID','$rating','$feedback')";
 		$result = mysqli_query($link, $qry);
 	
@@ -34,7 +35,7 @@ if (!isset($_COOKIE["UserID"])) {
 		    echo 'Review sumission failed.';
 		}
 	}
-	else{
+	elseif ($type == "worker"){
 		$qry = "INSERT INTO Reviews (JobId,WorkerRating,WorkerReview) VALUES ('$jobID','$rating','$feedback')";
 		$result = mysqli_query($link, $qry);
 		if ($result){
@@ -46,7 +47,10 @@ if (!isset($_COOKIE["UserID"])) {
 		else{
 		   echo 'Review submission failed.';
 		}
-	}		
+	}
+        else{
+        echo '<script type="text/javascript">window.location = "index.html"</script>';
+        }
 	mysqli_close($link);
 ?>
 <br>
