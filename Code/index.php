@@ -8,6 +8,11 @@
 	</head>
 	
 	<body>
+	<?php
+	if (isset($_COOKIE["UserID"])) {
+	echo '<script type="text/javascript">window.location = "home.php"</script>';
+	}
+	?>
 		<div id="bglayer">
 			<div style="overflow: auto;">
 				<img class="logo" src="site_logo_small.png" width="250">

@@ -7,12 +7,23 @@
 		<link rel="icon" href="fav.png" type="image/png" sizes="16x16">
 	</head>
 	<body>
+<div id="bglayer">
+	<div style="overflow: auto;">
+		<a href="home.php"><img class="logo" src="site_logo_small.png" width="250"></a>
+		<a href="home.php"><div id="link">Profile Home</div></a>
+		<a href="joblist.php"><div id="link">Search Jobs</div></a>
+		<a href="createjob.html"><div id="link">Create New Job</div></a><br><br><br><br><br>
+	</div>
+</div>
+<br>
+<br>
+
 		<div id="head">
 		<img src="site_logo.png" alt="Logo" width="500"></div>
 		<div id="login">
 		<form action="review.php" method="post">
-			Star Rating<br><input type="number" min="1" max="5" step="1" id="box" name="starRating" required><br><br>
-			Feedback<br><input type="text" id="box" name="feedback"><br><br>
+			Star Rating<br><input type="number" min="1" max="5" step="1" id="box" style="width: 50%;" name="starRating" required><br><br>
+			Feedback<br><textarea id="box" style="height: 200px" name="description" maxlength="512" required></textarea><br><br>
 			<input type="submit" value="Submit Review" id="submit">
 		</form>
 		</div>
