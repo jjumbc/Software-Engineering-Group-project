@@ -7,7 +7,7 @@
 	</head>
 <body background="bg.jpg">
 <?php
-if (!isset($_COOKIE["UserId"])) {
+if (!isset($_COOKIE["UserID"])) {
 	echo '<script type="text/javascript">window.location = "index.html"</script>';
 }
 ?>
@@ -41,7 +41,7 @@ if (!isset($_COOKIE["UserId"])) {
 		echo '</table>';
 	}
 	else {
-		echo 'No jobs found in your area! :(<br>';
+		echo 'No jobs found in your area!<br>';
 	}
 
 	mysqli_close($link);

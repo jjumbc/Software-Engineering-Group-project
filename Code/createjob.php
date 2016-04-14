@@ -7,7 +7,7 @@
 	</head>
 <body background="bg.jpg">
 <?php
-if (!isset($_COOKIE["UserId"])) {
+if (!isset($_COOKIE["UserID"])) {
 	echo '<script type="text/javascript">window.location = "index.html"</script>';
 }
 ?>
@@ -26,7 +26,7 @@ if (!isset($_COOKIE["UserId"])) {
 	$result = mysqli_query($link, $qry);
 	if ($result){
 		echo 'Job Created Successfully!';
-		echo '<script type="text/javascript">setTimeout(function(){window.location = "home.html"},2000)</script>';
+		echo '<script type="text/javascript">setTimeout(function(){window.location = "home.php"},2000)</script>';
 	}
 	else{
 		echo 'Job creation failed.';

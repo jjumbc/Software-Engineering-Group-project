@@ -7,7 +7,7 @@
 	</head>
 <body background="bg.jpg">
 <?php
-if (!isset($_COOKIE["UserId"])) {
+if (!isset($_COOKIE["UserID"])) {
 	echo '<script type="text/javascript">window.location = "index.html"</script>';
 }
 ?>

@@ -72,16 +72,6 @@ input[type=submit]:hover {
     margin: 20px 200px 0px 200px;
 }
 
-#content{
-    border-radius: 5px;
-    border: 2px solid #ffe493;
-    background-color: #d3d3d3;
-    padding: 40px;
-    float: left;
-    text-align: left;
-    width: 100%;
-}
-
 #jobview {
     border: 2px solid #ffe493;
     background-color: #F2F2F2;
