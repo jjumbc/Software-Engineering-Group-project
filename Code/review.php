@@ -1,7 +1,3 @@
-<?php
-// Start the session
-session_start();
-?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -10,11 +6,15 @@ session_start();
 		<link rel="icon" href="fav.png" type="image/png" sizes="16x16">
 	</head>
 <body background="bg.jpg">
-
+<?php
+if (!isset($_COOKIE["UserId"])) {
+	echo '<script type="text/javascript">window.location = "index.html"</script>';
+}
+?>
 <div id="login">
 <?php
 	$jobID = 
-	$userID = $_SESSION["UserID"];
+	$userID = $_COOKIE["UserID"];
 	$rating = $_POST["starRating"];
 	$feedback = $_POST["feedback"];
 	

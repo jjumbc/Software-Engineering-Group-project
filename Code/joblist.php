@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>VeriHandy</title>
+		<title>VeriHandy - Job List</title>
 		<link rel="stylesheet" type="text/css" href="styles.css">
 		<link rel="icon" href="fav.png" type="image/png" sizes="16x16">
 	</head>
 <body background="bg.jpg">
-
+<?php
+if (!isset($_COOKIE["UserId"])) {
+	echo '<script type="text/javascript">window.location = "index.html"</script>';
+}
+?>
 <div id="jobview">
 <?php
 	require 'link.php';
