@@ -1,3 +1,7 @@
+<?php
+// Start the session
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,18 +16,19 @@
 	$username = $_POST["user"];
 	$password = md5($_POST["pass"]);
 	require 'link.php';
-
 	$qry="SELECT * FROM Users WHERE UserName='$username' AND Password='$password'";
 	$result = mysqli_query($link, $qry);
 	if ($result && mysqli_num_rows($result) > 0) {
+		$row = mysqli_fetch_assoc($result);
+		$_SESSION["UserID"] = $row["UserID"];
 		echo "Welcome ";
 		echo $username;
 		echo "!<br>";
+		echo '<script type="text/javascript">setTimeout(function(){window.location = "home.html"},2000)</script>';
 	}
 	else {
 		echo 'Login failed. Please <a href="register.html">register</a>.';
 	}
-
 	mysqli_close($link);
 ?>
 <br>
