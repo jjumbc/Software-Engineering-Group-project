@@ -36,26 +36,33 @@ if (!isset($_COOKIE["UserID"])) {
 	$userID = $_COOKIE["UserID"];
 	require 'link.php';
 	
-	$qry="SELECT JobID,Description,Price,Date,Time,ZipCode FROM Jobs WHERE (CustomerID='$userID' OR WorkerID='$userID') AND Completed='0'";
+	$qry="SELECT JobID,CustomerID,WorkerID,Description,Price,Date,Time,ZipCode FROM Jobs WHERE (CustomerID='$userID' OR WorkerID='$userID') AND Completed='0'";
 	$result = mysqli_query($link, $qry);
 	if ($result && mysqli_num_rows($result) > 0) {
 		echo '<table cellpadding="0" cellspacing="0" class="db-table">';
-		echo '<tr><th style="width: 50%;">Job Description</th><th>Price</th><th>Date to Complete By</th><th>Time of Day</th>';
+		echo '<tr><th>User Type</th><th style="width: 50%;">Job Description</th><th>Price</th><th>Date to Complete By</th><th>Time of Day</th>';
 		echo '<th>Zip Code</th><th>Mark as Complete</th></tr>';
 		while($row = mysqli_fetch_row($result)) {
 				echo '<tr>';
 				foreach($row as $key=>$value) {
-					if ($key != 0){
-						if ($key == 2) {
+					if ($key == 0) {
+						$jobID = $value;
+					}
+					elseif ($key == 1 && $value == $userID) {
+						echo '<td>Customer</td>';
+						
+					}
+					elseif ($key == 2 && $value == $userID) {
+						echo '<td>Worker</td>';
+					}
+					elseif ($key > 2) {
+						if ($key == 4) {
 							echo '<td>$',$value,'</td>';
 						}
 						else {
 							echo '<td>',$value,'</td>';
 						}
-				}
-				else {
-					$jobID = $value;
-				}
+					}
 				}
 				echo '<td><form action="" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '">
 				<input type="submit" name="mark" style="width: 100%;" value="Completed"></form></td>';
@@ -74,13 +81,25 @@ if (!isset($_COOKIE["UserID"])) {
 	if ($result && mysqli_num_rows($result) > 0) {
 		
 		echo '<table cellpadding="0" cellspacing="0" class="db-table">';
-		echo '<tr><th style="width: 50%;">Job Description</th><th>Price</th><th>Date Accepted</th><th>Zip Code</th>';
+		echo '<tr><th>User Type</th><th style="width: 50%;">Job Description</th><th>Price</th><th>Date Accepted</th><th>Zip Code</th>';
 		echo '<th>Review</th></tr>';
 		while($row = mysqli_fetch_row($result)) {
 		
 				echo '<tr>';
 				foreach($row as $key=>$value) {
-					if ($key > 2) {
+					if ($key == 0) {
+						$jobID = $value;
+					}
+					elseif ($key == 1 && $value == $userID) {
+						$type = "customer";
+						echo '<td>Customer</td>';
+						
+					}
+					elseif ($key == 2 && $value == $userID) {
+						$type = "worker";
+						echo '<td>Worker</td>';
+					}
+					elseif ($key > 2) {
 						if ($key == 4) {
 							echo '<td>$',$value,'</td>';
 						}
@@ -88,25 +107,16 @@ if (!isset($_COOKIE["UserID"])) {
 							echo '<td>',$value,'</td>';
 						}
 					}
-					elseif ($key == 0) {
-						$jobID = $value;
-					}
-					elseif ($key == 1 && $value == $userID) {
-						$type = "customer";
-					}
-					elseif ($key == 2 && $value == $userID) {
-						$type = "worker";
-					}
 				}
 				
 				$qry = "SELECT CustomerRating, WorkerRating FROM Reviews WHERE JobID='$jobID'";
-				$result = mysqli_query($link, $qry);
-				if ($result && mysqli_num_rows($result) > 0) {
+				$result2 = mysqli_query($link, $qry);
+				if ($result2 && mysqli_num_rows($result2) > 0) {
 						echo '<td><form action="viewreview.php" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '"><input type="hidden" name="type" value="' . $type . '">
 						<input type="submit" name="submit" style="width: 100%;" value="View Review"></form></td>';
 						echo '</tr>';
 					}
-					else {
+				else {
 						echo '<td><form action="review_form.php" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '"><input type="hidden" name="type" value="' . $type . '">
 						<input type="submit" name="submit" style="width: 100%;" value="Submit Review"></form></td>';
 						echo '</tr>';
