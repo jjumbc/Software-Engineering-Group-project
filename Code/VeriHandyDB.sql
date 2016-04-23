@@ -116,6 +116,7 @@ CREATE TABLE `Users` (
   `UserName` varchar(20) NOT NULL,
   `Password` char(32) NOT NULL,
   `Type` char(1) NOT NULL DEFAULT '0',
+  `Banned` char(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`UserID`),
   UNIQUE KEY `UserName` (`UserName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
