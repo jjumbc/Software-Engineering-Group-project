@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>VeriHandy - Job List</title>
+		<title>VeriHandy - Ban User</title>
 		<link rel="stylesheet" type="text/css" href="styles.css">
 		<link rel="icon" href="fav.png" type="image/png" sizes="16x16">
 	</head>
-<body>
+<body background="bg.jpg">
 <?php
 if (!isset($_COOKIE["UserID"])) {
 	echo '<script type="text/javascript">window.location = "index.php"</script>';
@@ -41,37 +41,19 @@ if (!isset($_COOKIE["UserID"])) {
 <br>
 <br>
 
-<div id="jobview">
+<div id="login">
 <?php
-	$userID = $_COOKIE["UserID"];
+	$userID = $_POST["userID"];
 	require 'link.php';
 
-	$qry="SELECT JobID, Description, Price, Date, ZipCode FROM Jobs WHERE WorkerID IS NULL AND NOT (CustomerID = '$userID');";
+	$qry = "UPDATE Users SET Banned=1 WHERE UserID='$userID'";
 	$result = mysqli_query($link, $qry);
-	if ($result && mysqli_num_rows($result) > 0) {
-		echo '<table cellpadding="0" cellspacing="0" class="db-table">';
-		echo '<tr><th>Job</th><th>Price</th><th>Date to Complete By</th><th>Location</th>';
-		echo '<th>Work On Job</th></tr>';
-		while($row = mysqli_fetch_row($result)) {
-			echo '<tr>';
-			foreach($row as $key=>$value) {
-				if ($key != 0) {
-					if ($key == 2) {
-						echo '<td>$', $value, '</td>';
-					}
-					else {
-						echo '<td>', $value, '</td>';
-					}
-				}
-			}
-			echo '<td><form action="acceptjob.php" method="POST"><input type="hidden" name="jobID" value="' . $row[0] . '">
-				<input type="submit" name="submit" style="width: 100%;" value="Accept Job"></form></td>';
-			echo '</tr>';
-		}
-		echo '</table>';
+	if ($result){
+		echo 'User Banned!';
+		echo '<script type="text/javascript">setTimeout(function(){window.location = "admin.php"},2000)</script>';
 	}
-	else {
-		echo 'No jobs found in your area! :(<br>';
+	else{
+		echo 'Ban failed.';
 	}
 
 	mysqli_close($link);

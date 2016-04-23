@@ -93,6 +93,30 @@ input[type=submit]:hover {
     float: right;
 }
 
+#linkcomp {
+    width: 15%;
+    background-color: #D02930;
+    color: white;
+    padding: 14px 20px;
+    margin: 20px 15px 0px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
+#linkcompadmin {
+    width: 15%;
+    background-color: #00ACE6;
+    color: white;
+    padding: 14px 20px;
+    margin: 20px 15px 0px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
 .logo {
     float: left;
 }
