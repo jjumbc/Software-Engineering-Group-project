@@ -49,11 +49,20 @@ if (!isset($_COOKIE["UserID"])) {
 	$qry = "UPDATE Users SET Banned=1 WHERE UserID='$userID'";
 	$result = mysqli_query($link, $qry);
 	if ($result){
-		echo 'User Banned!';
-		echo '<script type="text/javascript">setTimeout(function(){window.location = "admin.php"},2000)</script>';
+		$qry2 = "UPDATE Jobs SET WorkerID=0, CustomerCompleted=9, WorkerCompleted=9 WHERE CustomerID='$userID' OR WorkerID='$userID'";
+		$result2 = mysqli_query($link, $qry2);
+		if ($result2){
+			echo 'User Banned!';
+			echo '<script type="text/javascript">setTimeout(function(){window.location = "admin.php"},2000)</script>';
+		}
+		else{
+			echo 'Ban failed.';
+			echo '<script type="text/javascript">setTimeout(function(){window.location = "admin.php"},2000)</script>';
+		}
 	}
 	else{
 		echo 'Ban failed.';
+		echo '<script type="text/javascript">setTimeout(function(){window.location = "admin.php"},2000)</script>';
 	}
 
 	mysqli_close($link);
