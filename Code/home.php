@@ -36,11 +36,11 @@ if (!isset($_COOKIE["UserID"])) {
 	$userID = $_COOKIE["UserID"];
 	require 'link.php';
 	
-	$qry="SELECT JobID,CustomerID,WorkerID,Description,Price,Date,Time,ZipCode FROM Jobs WHERE (CustomerID='$userID' OR WorkerID='$userID') AND Completed='0'";
+	$qry="SELECT JobID,CustomerID,WorkerID,CustomerCompleted,WorkerCompleted,Description,Price,Date,Time,ZipCode FROM Jobs WHERE (CustomerID='$userID' OR WorkerID='$userID') AND (CustomerCompleted='0' OR WorkerCompleted='0')";
 	$result = mysqli_query($link, $qry);
 	if ($result && mysqli_num_rows($result) > 0) {
 		echo '<table cellpadding="0" cellspacing="0" class="db-table">';
-		echo '<tr><th>User Type</th><th style="width: 50%;">Job Description</th><th>Price</th><th>Date to Complete By</th><th>Time of Day</th>';
+		echo '<tr><th>User Type</th><th>Working With</th><th style="width: 50%;">Job Description</th><th>Price</th><th>Date to Complete By</th><th>Time of Day</th>';
 		echo '<th>Zip Code</th><th>Mark as Complete</th></tr>';
 		while($row = mysqli_fetch_row($result)) {
 				echo '<tr>';
@@ -48,15 +48,45 @@ if (!isset($_COOKIE["UserID"])) {
 					if ($key == 0) {
 						$jobID = $value;
 					}
-					elseif ($key == 1 && $value == $userID) {
-						echo '<td>Customer</td>';
-						
+					elseif ($key == 1) {
+						$custID = $value;
+						if ($value == $userID) {
+							$type = "customer";
+							echo '<td>Customer</td>';
+						}
 					}
-					elseif ($key == 2 && $value == $userID) {
-						echo '<td>Worker</td>';
+					elseif ($key == 2) {
+						$workID = $value;
+						if ($custID == $userID) {
+						$qry = "SELECT FirstName,LastName FROM UserInfo WHERE UserID='$workID'";
+						$result2 = mysqli_query($link, $qry);
+						if (isset($workID)) {
+							$row = mysqli_fetch_assoc($result2);
+							$str = $row["FirstName"] . " " . $row["LastName"][0] . ".";
+							echo "<td>$str</td>";
+						}
+						else {
+							echo "<td>N/A</td>";
+						}
+						}
+						if ($value == $userID) {
+							$qry = "SELECT FirstName,LastName FROM UserInfo WHERE UserID='$custID'";
+							$result2 = mysqli_query($link, $qry);
+							$row = mysqli_fetch_assoc($result2);
+							$str = $row["FirstName"] . " " . $row["LastName"][0] . ".";
+							$type = "worker";
+							echo '<td>Worker</td>';
+							echo "<td>$str</td>";
+						}
 					}
-					elseif ($key > 2) {
-						if ($key == 4) {
+					elseif ($key == 3) {
+						$custCompleted = $value;
+					}
+					elseif ($key == 4) {
+						$workCompleted = $value;
+					}
+					elseif ($key > 4) {
+						if ($key == 6) {
 							echo '<td>$',$value,'</td>';
 						}
 						else {
@@ -64,8 +94,19 @@ if (!isset($_COOKIE["UserID"])) {
 						}
 					}
 				}
-				echo '<td><form action="" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '">
-				<input type="submit" name="mark" style="width: 100%;" value="Completed"></form></td>';
+				
+				if (isset($workID)) {
+					echo '<td><form action="" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '"><input type="hidden" name="type" value="' . $type . '">';
+					if (($custCompleted && !$workCompleted && $type == "customer") || ($workCompleted && !$custCompleted && $type == "worker")) {
+						echo '<input type="submit" name="mark" style="width: 100%;" value="Pending"></form></td>';
+					}
+					else {
+						echo '<input type="submit" name="mark" style="width: 100%;" value="Mark Complete"></form></td>';
+					}
+				}
+				else {
+					echo '<td><form onsubmit="return false;"><input type="submit" style="background-color: #A9A9A9; width: 100%" value="Mark Complete"></form></td>';
+				}
 				echo '</tr>';
 		}
 		echo '</table>';
@@ -76,12 +117,12 @@ if (!isset($_COOKIE["UserID"])) {
 	
 	echo "</div><div id='bglayer'>";
 	echo "<h2>Completed Jobs</h2>";
-	$qry="SELECT JobID,CustomerID,WorkerID,Description,Price,Date,ZipCode FROM Jobs WHERE (CustomerID='$userID' OR WorkerID='$userID') AND Completed='1'";
+	$qry="SELECT JobID,CustomerID,WorkerID,Description,Price,Date FROM Jobs WHERE (CustomerID='$userID' OR WorkerID='$userID') AND CustomerCompleted='1' AND WorkerCompleted='1'";
 	$result = mysqli_query($link, $qry);
 	if ($result && mysqli_num_rows($result) > 0) {
 		
 		echo '<table cellpadding="0" cellspacing="0" class="db-table">';
-		echo '<tr><th>User Type</th><th style="width: 50%;">Job Description</th><th>Price</th><th>Date Accepted</th><th>Zip Code</th>';
+		echo '<tr><th>User Type</th><th>Working With</th><th style="width: 50%;">Job Description</th><th>Price</th><th>Date Accepted</th>';
 		echo '<th>Review</th></tr>';
 		while($row = mysqli_fetch_row($result)) {
 		
@@ -90,14 +131,31 @@ if (!isset($_COOKIE["UserID"])) {
 					if ($key == 0) {
 						$jobID = $value;
 					}
-					elseif ($key == 1 && $value == $userID) {
-						$type = "customer";
-						echo '<td>Customer</td>';
-						
+					elseif ($key == 1) {
+						$custID = $value;
+						if ($value == $userID) {
+							$type = "customer";
+							echo '<td>Customer</td>';
+						}
 					}
-					elseif ($key == 2 && $value == $userID) {
-						$type = "worker";
-						echo '<td>Worker</td>';
+					elseif ($key == 2) {
+						$workID = $value;
+						if ($custID == $userID) {
+							$qry = "SELECT FirstName,LastName FROM UserInfo WHERE UserID='$workID'";
+							$result2 = mysqli_query($link, $qry);
+							$row = mysqli_fetch_assoc($result2);
+							$str = $row["FirstName"] . " " . $row["LastName"][0] . ".";
+							echo "<td>$str</td>";
+						}
+						if ($value == $userID) {
+							$qry = "SELECT FirstName,LastName FROM UserInfo WHERE UserID='$custID'";
+							$result2 = mysqli_query($link, $qry);
+							$row = mysqli_fetch_assoc($result2);
+							$str = $row["FirstName"] . " " . $row["LastName"][0] . ".";
+							$type = "worker";
+							echo '<td>Worker</td>';
+							echo "<td>$str</td>";
+						}
 					}
 					elseif ($key > 2) {
 						if ($key == 4) {
@@ -131,7 +189,13 @@ if (!isset($_COOKIE["UserID"])) {
 	
 	if (isset($_POST["mark"])) {
 		$jobID = $_POST["jobID"];
-		$qry = "UPDATE Jobs SET Completed='1' WHERE JobID='$jobID'";
+		$type = $_POST["type"];
+		if ($type == "customer") {
+			$qry = "UPDATE Jobs SET CustomerCompleted='1' WHERE JobID='$jobID'";
+		}
+		elseif ($type == "worker") {
+			$qry = "UPDATE Jobs SET WorkerCompleted='1' WHERE JobID='$jobID'";
+		}
 		$result = mysqli_query($link, $qry);
 	}
 ?>

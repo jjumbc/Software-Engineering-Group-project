@@ -33,7 +33,14 @@ if (!isset($_COOKIE["UserID"])) {
 
 		<div id="bglayer">
 		<form action="review.php" method="post">
-			Star Rating<br><input type="number" min="1" max="5" step="1" id="box" style="width: 50%;" name="starRating" required><br><br>
+			Star Rating<br>
+			<select id="box" name="starRating" style="width: 30%;">
+			  <option value="1">&#9733; (Very Poor)</option>
+			  <option value="2">&#9733;&#9733; (Poor)</option>
+			  <option value="3" selected>&#9733;&#9733;&#9733; (Ok)</option>
+			  <option value="4">&#9733;&#9733;&#9733;&#9733; (Good)</option>
+			  <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733; (Very Good)</option>
+			</select><br><br>
 			Feedback<br><textarea id="box" style="height: 200px" name="feedback" maxlength="512" required></textarea><br><br>
 			<?php
 				$jobID = $_POST["jobID"];

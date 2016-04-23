@@ -29,10 +29,9 @@ if (!isset($_COOKIE["UserID"])) {
 	</div>
 </div>
 <br>
-<br>
 		<div id="login">
 		<form action="createjob.php" method="post">
-			Description<br><br><textarea id="box" style="height: 200px" name="description" maxlength="512" required></textarea><br><br>
+			Job Description<br><br><textarea id="box" style="height: 200px" name="description" maxlength="512" required></textarea><br><br>
 			<input type="text" id="box" style="width: 65%"name="address" placeholder="Enter the Job Address" required>
 			<input type="text" id="box" style="width: 34%" name="zip" placeholder="Zip Code" required><br><br>
 			<input type="number" id="box" style="width: 60%" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" name="price" placeholder="Enter Job Price" required><br><br>

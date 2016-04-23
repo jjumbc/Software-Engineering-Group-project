@@ -24,7 +24,8 @@
 		echo '<script type="text/javascript">setTimeout(function(){window.location = "home.php"},2000)</script>';
 	}
 	else {
-		echo 'Login failed. Please <a href="register.html">register</a>.';
+		echo "That User does not exist! Please Register.";
+		echo '<script type="text/javascript">setTimeout(function(){window.location = "login.html"},2000)</script>';
 	}
 	mysqli_close($link);
 ?>

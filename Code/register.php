@@ -36,7 +36,7 @@
 	if ($result) {
 		echo "User ";
 		echo $username;
-		echo " Added!<br>";
+		echo " Added! Welcome to VeriHandy!<br>";
 		echo '<script type="text/javascript">
 		setTimeout(function(){window.location = "login.html"},2000);
 		</script>';

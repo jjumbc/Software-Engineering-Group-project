@@ -35,7 +35,7 @@ if (!isset($_COOKIE["UserID"])) {
 	$userID = $_COOKIE["UserID"];
 	require 'link.php';
 
-	$qry="SELECT JobID, Description, Price, Date, ZipCode FROM Jobs WHERE Completed = '0' AND WorkerID IS NULL AND NOT (CustomerID = '$userID');";
+	$qry="SELECT JobID, Description, Price, Date, ZipCode FROM Jobs WHERE WorkerID IS NULL AND NOT (CustomerID = '$userID');";
 	$result = mysqli_query($link, $qry);
 	if ($result && mysqli_num_rows($result) > 0) {
 		echo '<table cellpadding="0" cellspacing="0" class="db-table">';

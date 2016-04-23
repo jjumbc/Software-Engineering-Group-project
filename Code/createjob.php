@@ -48,7 +48,8 @@ if (!isset($_COOKIE["UserID"])) {
 		echo '<script type="text/javascript">setTimeout(function(){window.location = "home.php"},2000)</script>';
 	}
 	else{
-		echo 'Job creation failed.';
+		echo 'Job creation failed:' . mysqli_error($link);
+		echo '<script type="text/javascript">setTimeout(function(){window.location = "create_job.php"},2000)</script>';
 	}
 	mysqli_close($link);
 ?>
