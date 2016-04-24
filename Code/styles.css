@@ -175,6 +175,7 @@ input[type=submit]:hover {
 	text-align:center;
 	border-width:0px 0px 1px 1px;
 	padding: 6px;
+    color: white;
 }
 
 .nice-table tr:first-child td:first-child{

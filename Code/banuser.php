@@ -59,7 +59,7 @@ if (!isset($_COOKIE["UserID"])) {
 			$result3 = mysqli_query($link, $qry) or die('Ban failed:' . mysqli_error($link) . '<script type="text/javascript">setTimeout(function(){window.location = "admin.php"},2000)</script>');
 		}
 		elseif ($userID == $row["CustomerID"]) {
-			$qry = "UPDATE Jobs SET CustomerID=NULL, CustomerCompleted=9, WorkerCompleted=9 WHERE CustomerID='$userID' AND JobID='$jobID'";
+			$qry = "UPDATE Jobs SET CustomerID=0, CustomerCompleted=9, WorkerCompleted=9 WHERE CustomerID='$userID' AND JobID='$jobID'";
 			$result3 = mysqli_query($link, $qry) or die('Ban failed:' . mysqli_error($link) . '<script type="text/javascript">setTimeout(function(){window.location = "admin.php"},2000)</script>');
 		}
 	}

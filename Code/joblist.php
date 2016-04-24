@@ -46,7 +46,7 @@ if (!isset($_COOKIE["UserID"])) {
 	$userID = $_COOKIE["UserID"];
 	require 'link.php';
 
-	$qry="SELECT JobID, Description, Price, Date, ZipCode FROM Jobs WHERE WorkerID IS NULL AND NOT (CustomerID = '$userID');";
+	$qry="SELECT JobID, Description, Price, Date, ZipCode, Banned FROM Jobs JOIN Users ON CustomerID = UserID WHERE WorkerID IS NULL AND NOT (CustomerID = '$userID') AND NOT(Banned=1);";
 	$result = mysqli_query($link, $qry);
 	if ($result && mysqli_num_rows($result) > 0) {
 		echo '<div class="nice-table"><table>';
@@ -55,7 +55,7 @@ if (!isset($_COOKIE["UserID"])) {
 		while($row = mysqli_fetch_row($result)) {
 			echo '<tr>';
 			foreach($row as $key=>$value) {
-				if ($key != 0) {
+				if ($key != 0 && $key != 5) {
 					if ($key == 2) {
 						echo '<td>$', $value, '</td>';
 					}
