@@ -49,7 +49,7 @@ if (!isset($_COOKIE["UserID"])) {
 	$qry="SELECT JobID, Description, Price, Date, ZipCode FROM Jobs WHERE WorkerID IS NULL AND NOT (CustomerID = '$userID');";
 	$result = mysqli_query($link, $qry);
 	if ($result && mysqli_num_rows($result) > 0) {
-		echo '<table cellpadding="0" cellspacing="0" class="db-table">';
+		echo '<div class="nice-table"><table>';
 		echo '<tr><th>Job</th><th>Price</th><th>Date to Complete By</th><th>Location</th>';
 		echo '<th>Work On Job</th></tr>';
 		while($row = mysqli_fetch_row($result)) {
@@ -68,7 +68,7 @@ if (!isset($_COOKIE["UserID"])) {
 				<input type="submit" name="submit" style="width: 100%;" value="Accept Job"></form></td>';
 			echo '</tr>';
 		}
-		echo '</table>';
+		echo '</table></div>';
 	}
 	else {
 		echo 'No jobs found in your area! :(<br>';

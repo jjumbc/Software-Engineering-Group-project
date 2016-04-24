@@ -43,8 +43,6 @@
 	}
 	else {
 		echo "Registration failed: " . mysqli_error($link);
-		$qry = "DELETE FROM Users WHERE UserName='$username' AND Password='$password'";
-		$result = mysqli_query($link, $qry);
 		echo '<script type="text/javascript">
 		setTimeout(function(){window.location = "register.html"},2000);
 		</script>';

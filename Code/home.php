@@ -50,8 +50,8 @@ if (!isset($_COOKIE["UserID"])) {
 	$qry="SELECT JobID,CustomerID,WorkerID,CustomerCompleted,WorkerCompleted,Description,Price,Date,Time,ZipCode FROM Jobs WHERE (CustomerID='$userID' OR WorkerID='$userID') AND (CustomerCompleted='0' OR WorkerCompleted='0')";
 	$result = mysqli_query($link, $qry);
 	if ($result && mysqli_num_rows($result) > 0) {
-		echo '<table cellpadding="0" cellspacing="0" class="db-table">';
-		echo '<tr><th>User Type</th><th>Working With</th><th style="width: 50%;">Job Description</th><th>Price</th><th>Date to Complete By</th><th>Time of Day</th>';
+		echo '<div class="nice-table"><table>';
+		echo '<tr><th style="width: 10%;">User Type</th><th style="width: 10%;">Working With</th><th style="width: 40%;">Job Description</th><th>Price</th><th>Date to Complete By</th><th>Time of Day</th>';
 		echo '<th>Zip Code</th><th>Mark as Complete</th></tr>';
 		while($row = mysqli_fetch_row($result)) {
 				echo '<tr>';
@@ -69,22 +69,28 @@ if (!isset($_COOKIE["UserID"])) {
 					elseif ($key == 2) {
 						$workID = $value;
 						if ($custID == $userID) {
-						$qry = "SELECT FirstName,LastName FROM UserInfo WHERE UserID='$workID'";
-						$result2 = mysqli_query($link, $qry);
-						if (isset($workID)) {
-							$row = mysqli_fetch_assoc($result2);
-							$str = $row["FirstName"] . " " . $row["LastName"][0] . ".";
+							$qry = "SELECT UserName FROM Users WHERE UserID='$workID' AND Banned='0'";
+							$result2 = mysqli_query($link, $qry);
+							if ($result2 && mysqli_num_rows($result2) > 0) {
+								$row = mysqli_fetch_assoc($result2);
+								$str = $row["UserName"];
+							}
+							else {
+								$str = 'N/A';
+							}
 							echo "<td>$str</td>";
 						}
-						else {
-							echo "<td>N/A</td>";
-						}
-						}
+						
 						if ($value == $userID) {
-							$qry = "SELECT FirstName,LastName FROM UserInfo WHERE UserID='$custID'";
+							$qry = "SELECT UserName FROM Users WHERE UserID='$custID' AND Banned='0'";
 							$result2 = mysqli_query($link, $qry);
-							$row = mysqli_fetch_assoc($result2);
-							$str = $row["FirstName"] . " " . $row["LastName"][0] . ".";
+							if($result2 && mysqli_num_rows($result2) > 0) {
+								$row = mysqli_fetch_assoc($result2);
+								$str = $row["UserName"];
+							}
+							else {
+								$str = 'N/A';
+							}
 							$type = "worker";
 							echo '<td>Worker</td>';
 							echo "<td>$str</td>";
@@ -108,7 +114,7 @@ if (!isset($_COOKIE["UserID"])) {
 				
 				if (isset($workID)) {
 					echo '<td><form action="" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '"><input type="hidden" name="type" value="' . $type . '">';
-					if (($custCompleted && !$workCompleted && $type == "customer") || ($workCompleted && !$custCompleted && $type == "worker")) {
+					if (($custCompleted == 1 && !$workCompleted && $type == "customer") || ($workCompleted == 1 && !$custCompleted && $type == "worker")) {
 						echo '<input type="submit" name="mark" style="width: 100%;" value="Pending"></form></td>';
 					}
 					else {
@@ -120,10 +126,10 @@ if (!isset($_COOKIE["UserID"])) {
 				}
 				echo '</tr>';
 		}
-		echo '</table>';
+		echo '</table></div><br>';
 	}
 	else {
-		echo 'None';
+		echo 'None<br><br>';
 	}
 	
 	echo "</div><div id='bglayer'>";
@@ -132,8 +138,8 @@ if (!isset($_COOKIE["UserID"])) {
 	$result = mysqli_query($link, $qry);
 	if ($result && mysqli_num_rows($result) > 0) {
 		
-		echo '<table cellpadding="0" cellspacing="0" class="db-table">';
-		echo '<tr><th>User Type</th><th>Working With</th><th style="width: 50%;">Job Description</th><th>Price</th><th>Date Accepted</th>';
+		echo '<div class="nice-table"><table>';
+		echo '<tr><th style="width: 10%;">User Type</th><th style="width: 10%;">Working With</th><th style="width: 40%;">Job Description</th><th>Price</th><th>Date Accepted</th>';
 		echo '<th>Review</th></tr>';
 		while($row = mysqli_fetch_row($result)) {
 		
@@ -152,17 +158,27 @@ if (!isset($_COOKIE["UserID"])) {
 					elseif ($key == 2) {
 						$workID = $value;
 						if ($custID == $userID) {
-							$qry = "SELECT FirstName,LastName FROM UserInfo WHERE UserID='$workID'";
+							$qry = "SELECT UserName FROM Users WHERE UserID='$workID' AND Banned='0'";
 							$result2 = mysqli_query($link, $qry);
-							$row = mysqli_fetch_assoc($result2);
-							$str = $row["FirstName"] . " " . $row["LastName"][0] . ".";
+							if($result2 && mysqli_num_rows($result2) > 0) {
+								$row = mysqli_fetch_assoc($result2);
+								$str = $row["UserName"];
+							}
+							else {
+								$str = 'N/A';
+							}
 							echo "<td>$str</td>";
 						}
 						if ($value == $userID) {
-							$qry = "SELECT FirstName,LastName FROM UserInfo WHERE UserID='$custID'";
+							$qry = "SELECT UserName FROM Users WHERE UserID='$custID' AND Banned='0'";
 							$result2 = mysqli_query($link, $qry);
-							$row = mysqli_fetch_assoc($result2);
-							$str = $row["FirstName"] . " " . $row["LastName"][0] . ".";
+							if($result2 && mysqli_num_rows($result2) > 0) {
+								$row = mysqli_fetch_assoc($result2);
+								$str = $row["UserName"];
+							}
+							else {
+								$str = 'N/A';
+							}
 							$type = "worker";
 							echo '<td>Worker</td>';
 							echo "<td>$str</td>";
@@ -192,7 +208,7 @@ if (!isset($_COOKIE["UserID"])) {
 					}
 				
 		}
-		echo '</table>';
+		echo '</table></div>';
 	}
 	else {
 		echo 'None';
@@ -213,7 +229,9 @@ if (!isset($_COOKIE["UserID"])) {
 ?>
 <br>
 <br>
-<br>
 </div>
+<br>
+<br>
+<br>
 </body>
 </html>

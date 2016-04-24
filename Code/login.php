@@ -32,8 +32,8 @@
 			echo '<script type="text/javascript">setTimeout(function(){window.location = "login.html"},2000)</script>';
 		}
 		else {
-			echo "That User does not exist! Please Register.";
-			echo '<script type="text/javascript">setTimeout(function(){window.location = "register.html"},2000)</script>';
+			echo "User not found. Please register if you have not.";
+			echo '<script type="text/javascript">setTimeout(function(){window.location = "login.html"},2000)</script>';
 		}
 	}
 	mysqli_close($link);

@@ -57,7 +57,7 @@ if (!isset($_COOKIE["UserID"])) {
 	
 	$result = mysqli_query($link, $qry);
 	if ($result && mysqli_num_rows($result) > 0) {
-		echo '<table cellpadding="0" cellspacing="0" class="db-table">';
+		echo '<div class="nice-table"><table>';
 		echo '<tr><th>Review</th><th>Review Score</th></tr>';
 		while($row = mysqli_fetch_row($result)) {
 			echo '<tr>';
@@ -66,7 +66,7 @@ if (!isset($_COOKIE["UserID"])) {
 			}
 			echo '</tr>';
 		}
-		echo '</table>';
+		echo '</table></div>';
 	}
 	else {
 		echo 'No reviews found<br>';

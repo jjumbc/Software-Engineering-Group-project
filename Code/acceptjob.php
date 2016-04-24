@@ -54,7 +54,8 @@ if (!isset($_COOKIE["UserID"])) {
 		echo '<script type="text/javascript">setTimeout(function(){window.location = "home.php"},2000)</script>';
 	}
 	else{
-		echo 'Job accept failed.';
+		echo 'Job acceptance failed:' . mysqli_error($link);
+		echo '<script type="text/javascript">setTimeout(function(){window.location = "home.php"},2000)</script>';
 	}
 
 	mysqli_close($link);
