@@ -32,7 +32,8 @@ CREATE TABLE `Jobs` (
   `Time` time NOT NULL,
   `Address` varchar(50) NOT NULL,
   `ZipCode` int(11) NOT NULL,
-  `Completed` tinyint(1) NOT NULL DEFAULT '0',
+  `CustomerCompleted` tinyint(1) NOT NULL DEFAULT '0',
+  `WorkerCompleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`JobID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -115,6 +116,7 @@ CREATE TABLE `Users` (
   `UserName` varchar(20) NOT NULL,
   `Password` char(32) NOT NULL,
   `Type` char(1) NOT NULL DEFAULT '0',
+  `Banned` char(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`UserID`),
   UNIQUE KEY `UserName` (`UserName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

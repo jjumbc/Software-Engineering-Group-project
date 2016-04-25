@@ -14,10 +14,21 @@ if (!isset($_COOKIE["UserID"])) {
 <div id="bglayer">
 	<div style="overflow: auto;">
 		<a href="home.php"><img class="logo" src="site_logo_small.png" width="250"></a>
-		<a href="home.php"><div id="link">Profile Home</div></a>
-		<a href="joblist.php"><div id="link">Search Jobs</div></a>
-		<a href="create_job.php"><div id="link">Create New Job</div></a><br><br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<?php
+			if ($_COOKIE["UserType"] == 1) {
+				echo '<a href="home.php"><div id="linkcomp">Profile Home</div></a>
+				<a href="joblist.php"><div id="linkcomp">Search Jobs</div></a>
+				<a href="create_job.php"><div id="linkcomp">Create New Job</div></a>
+				<a href="admin.php"><div id="linkcompadmin">Admin Panel</div></a>
+				<br><br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+			}
+			else {
+				echo '<a href="home.php"><div id="link">Profile Home</div></a>
+				<a href="joblist.php"><div id="link">Search Jobs</div></a>
+				<a href="create_job.php"><div id="link">Create New Job</div></a>
+				<br><br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+			}
+
 			if (isset($_COOKIE["UserName"])) {
 				echo "Hello, ";
 				echo $_COOKIE["UserName"];
@@ -30,19 +41,24 @@ if (!isset($_COOKIE["UserID"])) {
 <br>
 <br>
 
-<div id="login">
+<div id="bglayer">
 <?php
-	$jobID = $_COOKIE["JobID"];
-        setcookie("JobID", "", 1, "/");
 	require 'link.php';
+	$jobID = $_POST["jobID"];
    
-   $qry = "SELECT * FROM Reviews WHERE JobID = '$jobID'";
+   $qry = "SELECT * FROM Reviews WHERE JobID='$jobID'";
    $result = mysqli_query($link, $qry);
-   if($result){
-   echo '$result'
+   if($result && mysqli_num_rows($result) > 0) {
+	$row = mysqli_fetch_assoc($result);
+	$worker = $row["WorkerReview"];
+	$customer = $row["CustomerReview"];
+	echo "<h2>Customer Feedback</h2>";
+	echo $customer;
+	echo "<br><h2>Worker Feedback</h2>";
+	echo $worker;
    }
    else{
-   echo "Review hasnt been submitted for this job request yet."
+   echo "Review hasnt been submitted for this job request yet.";
    echo '<script type="text/javascript">
    setTimeout(function(){window.location = "home.html"},2000)
    </script>';
