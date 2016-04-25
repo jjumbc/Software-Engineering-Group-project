@@ -79,6 +79,32 @@ if (!isset($_COOKIE["UserID"])) {
 	else {
 		echo 'None';
 	}
+?>
+
+<br><br><br></div><div id="bglayer">
+<h2>Banned Users</h2>
+<?php
+	$userID = $_COOKIE["UserID"];
+	require 'link.php';
+	
+	$qry="SELECT Users.UserID, Users.UserName, UserInfo.FirstName, UserInfo.LastName FROM Users JOIN UserInfo ON Users.UserID=UserInfo.UserID WHERE Banned=1";
+	$result = mysqli_query($link, $qry);
+	if ($result && mysqli_num_rows($result) > 0) {
+		echo '<div class="nice-table"><table>';
+		echo '<tr><th>User ID</th><th>Username</th><th>First Name</th><th>Last Name</th></tr>';
+		while($row = mysqli_fetch_row($result)) {
+			$rowUserID = $row[0];
+			echo '<tr>';
+			foreach($row as $key=>$value) {
+				echo '<td>', $value, '</td>';
+			}
+			echo '</tr>';
+		}
+		echo '</table></div>';
+	}
+	else {
+		echo 'None';
+	}
 	
 	mysqli_close($link);
 ?>
