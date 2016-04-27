@@ -64,8 +64,8 @@
 	$result = mysqli_query($link, $qry);
 	if ($result && mysqli_num_rows($result) > 0) {
 		echo '<div class="nice-table"><table>';
-		echo '<tr><th style="width: 10%;">User Type</th><th style="width: 10%;">Working With</th><th style="width: 40%;">Job Description</th><th>Price</th><th>Date to Complete By</th><th>Time of Day</th>';
-		echo '<th>Zip Code</th><th>Mark as Complete</th></tr>';
+		echo '<tr><th style="width: 10%;">User Type</th><th style="width: 10%;">Working With</th><th style="width: 40%;">Job Description</th><th>Price</th><th>Complete By</th><th>Time of Day</th>';
+		echo '<th>Zip Code</th><th>Mark as Complete</th><th>Remove Job</th></tr>';
 		while($row = mysqli_fetch_row($result)) {
 				echo '<tr>';
 				foreach($row as $key=>$value) {
@@ -87,6 +87,12 @@
 							if ($result2 && mysqli_num_rows($result2) > 0) {
 								$row = mysqli_fetch_assoc($result2);
 								$str = $row["UserName"];
+								$qry="SELECT AVG(CustomerRating) FROM Reviews JOIN Jobs ON Reviews.JobID=Jobs.JobID WHERE WorkerID='$workID'";
+								$result3 = mysqli_query($link, $qry);
+								$row = mysqli_fetch_row($result3);
+								if ($row[0]) {
+									$str = $str . "<br> (" . substr($row[0],0,3) . " / 5)";
+								}
 							}
 							else {
 								$str = 'N/A';
@@ -100,6 +106,12 @@
 							if($result2 && mysqli_num_rows($result2) > 0) {
 								$row = mysqli_fetch_assoc($result2);
 								$str = $row["UserName"];
+								$qry="SELECT AVG(WorkerRating) FROM Reviews JOIN Jobs ON Reviews.JobID=Jobs.JobID WHERE CustomerID='$custID'";
+								$result3 = mysqli_query($link, $qry);
+								$row = mysqli_fetch_row($result3);
+								if ($row[0]) {
+									$str = $str . "<br> (" . substr($row[0],0,3) . " / 5)";
+								}
 							}
 							else {
 								$str = 'N/A';
@@ -131,12 +143,21 @@
 					}
 					else {
 						echo '<td><form action="complete.php" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '"><input type="hidden" name="type" value="' . $type . '">';
-						echo '<input type="submit" name="mark" style="width: 100%;" value="Mark Complete"></form></td>';
+						echo '<input type="submit" name="mark" style="width: 100%;" value="Completed"></form></td>';
 					}
 				}
 				else {
-					echo '<td><form onsubmit="return false;"><input type="submit" style="background-color: #A9A9A9; width: 100%" value="Mark Complete"></form></td>';
+					echo '<td><form onsubmit="return false;"><input type="submit" style="background-color: #A9A9A9; width: 100%" value="Completed"></form></td>';
 				}
+				
+				if ((!$custCompleted && !$workCompleted)){
+					echo '<td style="text-align: center;"><form action="removejob.php" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '">';
+					echo '<input type="submit" style="background-color: #00ACE6; width: auto;" value="X"></form></td>';
+				}
+				else {
+					echo '<td style="text-align: center;"><form onsubmit="return false;"><input type="submit" style="background-color: #A9A9A9; width: auto;" value="X"></form></td>';
+				}
+				
 				echo '</tr>';
 		}
 		echo '</table></div><br>';
@@ -212,7 +233,7 @@
 				$result2 = mysqli_query($link, $qry);
 				if ($result2) {
 						echo '<td><form action="reviews.php" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '"><input type="hidden" name="type" value="' . $type . '">
-						<input type="submit" name="submit" style="width: 100%;" value="Review"></form></td>';
+						<input type="submit" name="submit" style="width: 100%;" value="Reviews"></form></td>';
 						echo '</tr>';
 					}
 				

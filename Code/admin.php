@@ -34,7 +34,12 @@
 				$qry3="SELECT AVG(CustomerRating) FROM Reviews JOIN Jobs ON Reviews.JobID=Jobs.JobID WHERE WorkerID='$rowUserID'";
 				$result3 = mysqli_query($link, $qry3);
 				$row3 = mysqli_fetch_row($result3);
-				echo '<td><a href="adminreviewlist.php?ID=', $rowUserID, '&type=worker">', $row3[0], '/5</a></td>';
+				if ($row3[0]) {
+					echo '<td><a href="adminreviewlist.php?ID=', $rowUserID, '&type=worker">', substr($row3[0],0,3), ' / 5</a></td>';
+				}
+				else {
+					echo '<td>None</td>';
+				}
 
 				$qry4="SELECT COUNT(*) FROM Jobs WHERE CustomerID='$rowUserID'";
 				$result4 = mysqli_query($link, $qry4);
@@ -44,7 +49,12 @@
 				$qry5="SELECT AVG(WorkerRating) FROM Reviews JOIN Jobs ON Reviews.JobID=Jobs.JobID WHERE CustomerID='$rowUserID'";
 				$result5 = mysqli_query($link, $qry5);
 				$row5 = mysqli_fetch_row($result5);
-				echo '<td><a href="adminreviewlist.php?ID=', $rowUserID, '&type=customer">', $row5[0], '/5</a></td>';
+				if ($row5[0]) {
+					echo '<td><a href="adminreviewlist.php?ID=', $rowUserID, '&type=customer">', substr($row5[0],0,3), '/ 5</a></td>';
+				}
+				else {
+					echo '<td>None</td>';
+				}
 
 				echo '<td><form action="banuser.php" method="POST"><input type="hidden" name="userID" value="' . $rowUserID . '">
 				<input type="submit" name="submit" style="width: 100%;" value="Ban This User"></form></td>';

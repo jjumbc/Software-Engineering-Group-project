@@ -37,17 +37,17 @@
 			echo "&#9733;&#9733;&#9733; (Ok)";
 		}
 		elseif ($customerStar == 4){
-			echo "&#9733;&#9733;&#9733;&#9733;&#9733; (Good)";
+			echo "&#9733;&#9733;&#9733;&#9733; (Good)";
 		}
 		elseif ($custmerStar == 5){
-			echo "&#9733;&#9733;&#9733;&#9733;&#9733;&#9733; (Very Good)";
+			echo "&#9733;&#9733;&#9733;&#9733;&#9733; (Very Good)";
 		}
 		echo "<br><br>";
 		echo $customer;
 	}
 	else{
 		if ($type == "customer"){
-			echo '<form action="review_form.php" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '"><input type="hidden" name="type" value="' . $type . '">
+			echo '<form action="review_form.php" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '"><input type="hidden" name="type" value="' . $type . '"><br>
 			<input type="submit" name="submit" style="width: 25%;" value="Write Review"></form>';
 		}
 		else {
@@ -58,26 +58,26 @@
 	if ($worker != NULL) {
 		echo "Star Rating: ";
 		if ($workerStar == 1){
-			echo "&#9733;";
+			echo "&#9733; (Very Poor)";
 		}
 		elseif ($workerStar == 2){
-			echo "&#9733;&#9733;";
+			echo "&#9733;&#9733; (Poor)";
 		}
 		elseif ($workerStar == 3){
-			echo "&#9733;&#9733;&#9733;";
+			echo "&#9733;&#9733;&#9733; (Ok)";
 		}
 		elseif ($workerStar == 4){
-			echo "&#9733;&#9733;&#9733;&#9733;&#9733;";
+			echo "&#9733;&#9733;&#9733;&#9733; (Good)";
 		}
 		elseif ($workerStar == 5){
-			echo "&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;";
+			echo "&#9733;&#9733;&#9733;&#9733;&#9733; (Very Good)";
 		}
 		echo "<br><br>";
 		echo $worker;
 	}
 	else{
 		if ($type == "worker"){
-			echo '<form action="review_form.php" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '"><input type="hidden" name="type" value="' . $type . '">
+			echo '<form action="review_form.php" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '"><input type="hidden" name="type" value="' . $type . '"><br>
 			<input type="submit" name="submit" style="width: 25%;" value="Write Review"></form>';
 		}
 		else {

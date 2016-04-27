@@ -58,7 +58,7 @@ input[type=submit]:active {
 	border: 2px solid #ffe493;
     background-color: #F2F2F2;
     padding: 40px;
-	margin: 50px 30% 0px 30%;
+	margin: 50px 25% 0px 25%;
 }
 
 #box {
@@ -218,10 +218,6 @@ input[type=submit]:active {
 
 .nice-table tr:last-child td{
 	border-width:0px 1px 0px 0px;
-}
-
-.nice-table tr td:last-child{
-	border-width:0px 0px 1px 0px;
 }
 
 .nice-table th{

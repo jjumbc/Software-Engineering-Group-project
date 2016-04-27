@@ -22,18 +22,18 @@
 		echo "Welcome ";
 		echo $row["FirstName"];
 		echo "!<br>";
-		echo '<script type="text/javascript">setTimeout(function(){window.location = "home.php"},2000)</script>';
+		echo '<script type="text/javascript">setTimeout(function(){window.location = "home.php"},1500)</script>';
 	}
 	else {
 		$qry2="SELECT * FROM Users WHERE UserName='$username' AND NOT(Banned=1)";
 		$result2 = mysqli_query($link, $qry2);
 		if ($result2 && mysqli_num_rows($result2) > 0) {
 			echo "Incorrect password! Please try again.";
-			echo '<script type="text/javascript">setTimeout(function(){window.location = "login.html"},2000)</script>';
+			echo '<script type="text/javascript">setTimeout(function(){window.location = "login.html"},1500)</script>';
 		}
 		else {
 			echo "User not found. Please register if you have not.";
-			echo '<script type="text/javascript">setTimeout(function(){window.location = "login.html"},2000)</script>';
+			echo '<script type="text/javascript">setTimeout(function(){window.location = "login.html"},1500)</script>';
 		}
 	}
 	mysqli_close($link);

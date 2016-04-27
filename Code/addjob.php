@@ -24,11 +24,11 @@
 	$result = mysqli_query($link, $qry);
 	if ($result){
 		echo 'Job Created Successfully!';
-		echo '<script type="text/javascript">setTimeout(function(){window.location = "home.php"},2000)</script>';
+		echo '<script type="text/javascript">setTimeout(function(){window.location = "home.php"},1500)</script>';
 	}
 	else{
 		echo 'Job creation failed:' . mysqli_error($link);
-		echo '<script type="text/javascript">setTimeout(function(){window.location = "create_job.php"},2000)</script>';
+		echo '<script type="text/javascript">setTimeout(function(){window.location = "create_job.php"},1500)</script>';
 	}
 	mysqli_close($link);
 ?>

@@ -41,13 +41,13 @@
 		echo $username;
 		echo " Added! Welcome to VeriHandy!<br>";
 		echo '<script type="text/javascript">
-		setTimeout(function(){window.location = "login.html"},2000);
+		setTimeout(function(){window.location = "login.html"},1500);
 		</script>';
 	}
 	else {
 		echo "Registration failed: " . mysqli_error($link);
 		echo '<script type="text/javascript">
-		setTimeout(function(){window.location = "register.html"},2000);
+		setTimeout(function(){window.location = "register.html"},1500);
 		</script>';
 	}
 	mysqli_close($link);

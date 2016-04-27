@@ -31,7 +31,7 @@
 			$qry = "UPDATE Alerts SET Reviewed=1 WHERE UserID='$worker'";
 			$result3 = mysqli_query($link, $qry);
 	   	    echo '<script type="text/javascript">
-	   	    setTimeout(function(){window.location = "reviews.php"},2000)
+	   	    setTimeout(function(){window.location = "home.php"},1500)
 	   	    </script>';
 		}
 		else{
@@ -50,7 +50,7 @@
 			$qry = "UPDATE Alerts SET Reviewed=1 WHERE UserID='$customer'";
 			$result3 = mysqli_query($link, $qry);
 	   	    echo '<script type="text/javascript">
-	   	    setTimeout(function(){window.location = "reviews.php"},2000)
+	   	    setTimeout(function(){window.location = "home.php"},1500)
 	   	    </script>';
 		}
 		else{

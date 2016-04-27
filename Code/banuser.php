@@ -18,27 +18,27 @@
 	$result = mysqli_query($link, $qry);
 
 	$qry = "SELECT WorkerID,CustomerID,JobID FROM Jobs WHERE CustomerID='$userID' OR WorkerID='$userID'";
-	$result2 = mysqli_query($link, $qry) or die('Ban failed:' . mysqli_error($link) . '<script type="text/javascript">setTimeout(function(){window.location = "admin.php"},2000)</script>');
+	$result2 = mysqli_query($link, $qry) or die('Ban failed:' . mysqli_error($link) . '<script type="text/javascript">setTimeout(function(){window.location = "admin.php"},1500)</script>');
 	
 	while($row = mysqli_fetch_assoc($result2)){
 		$jobID = $row["JobID"];
 		if ($userID == $row["WorkerID"]) {
 			$qry = "UPDATE Jobs SET WorkerID=NULL, CustomerCompleted=9, WorkerCompleted=9 WHERE WorkerID='$userID' AND JobID='$jobID'";
-			$result3 = mysqli_query($link, $qry) or die('Ban failed:' . mysqli_error($link) . '<script type="text/javascript">setTimeout(function(){window.location = "admin.php"},2000)</script>');
+			$result3 = mysqli_query($link, $qry) or die('Ban failed:' . mysqli_error($link) . '<script type="text/javascript">setTimeout(function(){window.location = "admin.php"},1500)</script>');
 		}
 		elseif ($userID == $row["CustomerID"]) {
 			$qry = "UPDATE Jobs SET CustomerID=0, CustomerCompleted=9, WorkerCompleted=9 WHERE CustomerID='$userID' AND JobID='$jobID'";
-			$result3 = mysqli_query($link, $qry) or die('Ban failed:' . mysqli_error($link) . '<script type="text/javascript">setTimeout(function(){window.location = "admin.php"},2000)</script>');
+			$result3 = mysqli_query($link, $qry) or die('Ban failed:' . mysqli_error($link) . '<script type="text/javascript">setTimeout(function(){window.location = "admin.php"},1500)</script>');
 		}
 	}
 	
 	if ($result) {
 	echo 'User Banned!';
-	echo '<script type="text/javascript">setTimeout(function(){window.location = "admin.php"},2000)</script>';
+	echo '<script type="text/javascript">setTimeout(function(){window.location = "admin.php"},1500)</script>';
 	}
 	else {
 		echo 'Ban failed:' . mysqli_error($link);
-		echo '<script type="text/javascript">setTimeout(function(){window.location = "admin.php"},2000)</script>';
+		echo '<script type="text/javascript">setTimeout(function(){window.location = "admin.php"},1500)</script>';
 	}
 
 	mysqli_close($link);

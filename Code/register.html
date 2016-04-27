@@ -16,17 +16,17 @@
   <div id="head"><img src="site_logo.png" alt="Logo" width="500"></div>
   <div id="login">
     <form action="register.php" method="post">
-      <input type="text" id="box" name="user" placeholder="User Name" pattern="[A-Za-z0-9-_\.]{3,24}" required="" title="Username must be between 3 and 24 characters, using letters, numbers, underscores, dashes, or periods."><br>
+      <input type="text" id="box" name="user" placeholder="User Name" pattern="[A-Za-z0-9-_\.]{3,24}" required title="Username must be between 3 and 24 characters, using letters, numbers, underscores, dashes, or periods."><br>
       <br>
-      <input type="password" id="box" name="pass" placeholder="Password" pattern=".{6,24}" required="" title="Password must between 6 and 24 characters."><br>
+      <input type="password" id="box" name="pass" placeholder="Password" pattern=".{6,24}" required title="Password must between 6 and 24 characters."><br>
       <br>
-      <input type="text" id="box" class="c1" name="first" placeholder="First Name" pattern="[A-Za-z-']+" required="" title="Name must only be letters, dashes, and apostrophes.">
-      <input type="text" id="box" class="c2" name="last" placeholder="Last Name" pattern="[A-Za-z-']+" required="" title="Name must only be letters, dashes, and apostrophes."><br>
+      <input type="text" id="box" class="c1" name="first" placeholder="First Name" pattern="[A-Za-z-']+" required title="Name must only be letters, dashes, and apostrophes.">
+      <input type="text" id="box" class="c2" name="last" placeholder="Last Name" pattern="[A-Za-z-']+" required title="Name must only be letters, dashes, and apostrophes."><br>
       <br>
-      <input type="text" id="box" name="address1" placeholder="Address (Line 1)" required=""><br>
+      <input type="text" id="box" name="address1" placeholder="Address (Line 1)" pattern="[1-9][0-9]{0,4} [A-Za-z- \.]+" required><br>
       <input type="text" id="box" name="address2" placeholder="Address (Line 2)"><br>
       <br>
-      <input type="text" id="box" class="c3" name="city" placeholder="City/Town" required=""> <select id="box" class="c4" name="state">
+      <input type="text" id="box" class="c3" name="city" placeholder="City/Town" required> <select id="box" class="c4" name="state">
         <option value="AL">
           Alabama
         </option>
@@ -182,11 +182,11 @@
         </option>
       </select><br>
       <br>
-      <input type="text" id="box" name="zip" placeholder="Zip Code" required=""><br>
+      <input type="text" id="box" name="zip" placeholder="Zip Code" pattern="[0-9]{5}" required><br>
       <br>
-      <input type="email" id="box" name="email" placeholder="E-mail Address" required=""><br>
+      <input type="email" id="box" name="email" placeholder="E-mail Address" required><br>
       <br>
-      <input type="tel" id="box" name="tel" placeholder="Contact Phone #" required=""><br>
+      <input type="tel" id="box" name="tel" placeholder="Contact Phone #" required><br>
       <br>
       <input type="submit" value="Submit" id="submit">
     </form>

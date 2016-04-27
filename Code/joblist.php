@@ -39,7 +39,7 @@
 		echo '</table></div>';
 	}
 	else {
-		echo 'No jobs found in your area! :(<br>';
+		echo '<br>No jobs found in your area! :(<br>';
 	}
 
 	mysqli_close($link);
