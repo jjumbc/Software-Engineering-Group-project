@@ -9,7 +9,7 @@
 <?php
 	require 'header.php';
 ?>
-<div id="jobview">
+<div id="bglayer">
 <h2>All Reviews for Selected User</h2>
 <?php
 	$userID = $_GET["ID"];

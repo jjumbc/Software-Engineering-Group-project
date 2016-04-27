@@ -94,15 +94,6 @@ input[type=submit]:active {
 	opacity: 0;
 }
 
-#jobview {
-    border: 2px solid #ffe493;
-    background-color: #F2F2F2;
-    padding: 40px;
-    border-radius: 5px;
-    margin: 20px 200px 0px 200px;
-    text-align: center;
-}
-
 #link {
     width: 20%;
     background-color: #D02930;
