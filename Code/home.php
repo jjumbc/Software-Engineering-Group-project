@@ -23,10 +23,14 @@
 				if ($accepted) {
 					$show = 'block';
 					$str = 'Someone has accepted one of your jobs! Check it out below.';
+					$qry = "UPDATE Alerts SET Accepted=0 WHERE UserID='$userID'";
+					$result2 = mysqli_query($link, $qry);
 				}
 				if ($reviewed) {
 					$show = 'block';
 					$str = 'Someone has reviewed one of your jobs! Check it out below.';
+					$qry = "UPDATE Alerts SET Reviewed=0 WHERE UserID='$userID'";
+					$result2 = mysqli_query($link, $qry);
 				}
 				if ($accepted && $reviewed)
 				{
@@ -36,6 +40,8 @@
 					echo $str;
 					echo '<div style="float: right;"><span style="color: #D02930;"><b>X</b></span></div></div><br>';
 					$str = 'Someone has reviewed one of your jobs! Check it out below.';
+					$qry = "UPDATE Alerts SET Accepted=0,Reviewed=0 WHERE UserID='$userID'";
+					$result2 = mysqli_query($link, $qry);
 				}
 			}
 	echo '<div id="notification" onclick="fade(this);" style="display: ' . $show . ';">';
@@ -124,7 +130,7 @@
 						echo '<td><form onsubmit="return false;"><input type="submit" name="mark" style="width: 100%;" value="Pending"></form></td>';
 					}
 					else {
-						echo '<td><form action="" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '"><input type="hidden" name="type" value="' . $type . '">';
+						echo '<td><form action="complete.php" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '"><input type="hidden" name="type" value="' . $type . '">';
 						echo '<input type="submit" name="mark" style="width: 100%;" value="Mark Complete"></form></td>';
 					}
 				}
@@ -201,11 +207,12 @@
 					}
 				}
 				
+				
 				$qry = "SELECT CustomerRating, WorkerRating FROM Reviews WHERE JobID='$jobID'";
 				$result2 = mysqli_query($link, $qry);
 				if ($result2) {
 						echo '<td><form action="ReviewNew.php" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '"><input type="hidden" name="type" value="' . $type . '">
-						<input type="submit" name="submit" style="width: 100%;" value="New Review Button Needs A Name"></form></td>';
+						<input type="submit" name="submit" style="width: 100%;" value="Review"></form></td>';
 						echo '</tr>';
 					}
 				
@@ -216,17 +223,6 @@
 		echo 'None';
 	}
 	
-	if (isset($_POST["mark"])) {
-		$jobID = $_POST["jobID"];
-		$type = $_POST["type"];
-		if ($type == "customer") {
-			$qry = "UPDATE Jobs SET CustomerCompleted='1' WHERE JobID='$jobID'";
-		}
-		elseif ($type == "worker") {
-			$qry = "UPDATE Jobs SET WorkerCompleted='1' WHERE JobID='$jobID'";
-		}
-		$result = mysqli_query($link, $qry);
-	}
 	mysqli_close($link);
 ?>
 <br>
