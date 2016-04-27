@@ -26,21 +26,21 @@
 	$customerStar = $row["CustomerRating"];
 	echo "<h2>Customer Feedback</h2>";
 	if ($customer != NULL) {
-		echo "Star Rating: ";
+		echo "Rating: ";
 		if ($customerStar == 1){
-			echo "&#9733;";
+			echo "&#9733; (Very Poor)";
 		}
 		elseif ($customerStar == 2){
-			echo "&#9733;&#9733;";
+			echo "&#9733;&#9733; (Poor)";
 		}
 		elseif ($customerStar == 3){
-			echo "&#9733;&#9733;&#9733;";
+			echo "&#9733;&#9733;&#9733; (Ok)";
 		}
 		elseif ($customerStar == 4){
-			echo "&#9733;&#9733;&#9733;&#9733;&#9733;";
+			echo "&#9733;&#9733;&#9733;&#9733;&#9733; (Good)";
 		}
 		elseif ($custmerStar == 5){
-			echo "&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;";
+			echo "&#9733;&#9733;&#9733;&#9733;&#9733;&#9733; (Very Good)";
 		}
 		echo "<br><br>";
 		echo $customer;

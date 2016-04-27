@@ -25,7 +25,7 @@
 		if ($result){
 		    echo "Review Submitted!<br>";
 	   	    echo '<script type="text/javascript">
-	   	    setTimeout(function(){window.location = "home.html"},2000)
+	   	    setTimeout(function(){window.location = "reviews.php"},2000)
 	   	    </script>';
 		}
 		else{
@@ -38,14 +38,14 @@
 		if ($result){
 		    echo "Review Submitted!<br>";
 	   	    echo '<script type="text/javascript">
-	   	    setTimeout(function(){window.location = "home.html"},2000)
+	   	    setTimeout(function(){window.location = "reviews.php"},2000)
 	   	    </script>';
 		}
 		else{
 		   echo 'Review submission failed.';
 		}
 	}
-        else{
+    else{
         echo '<script type="text/javascript">window.location = "index.php"</script>';
         }
 	mysqli_close($link);

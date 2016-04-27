@@ -211,7 +211,7 @@
 				$qry = "SELECT CustomerRating, WorkerRating FROM Reviews WHERE JobID='$jobID'";
 				$result2 = mysqli_query($link, $qry);
 				if ($result2) {
-						echo '<td><form action="ReviewNew.php" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '"><input type="hidden" name="type" value="' . $type . '">
+						echo '<td><form action="reviews.php" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '"><input type="hidden" name="type" value="' . $type . '">
 						<input type="submit" name="submit" style="width: 100%;" value="Review"></form></td>';
 						echo '</tr>';
 					}

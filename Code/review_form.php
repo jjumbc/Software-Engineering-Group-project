@@ -12,7 +12,7 @@
 ?>
 
 		<div id="bglayer">
-		<form action="review.php" method="post">
+		<form action="addreview.php" method="post">
 			Star Rating<br>
 			<select id="box" name="starRating" style="width: 30%;">
 			  <option value="1">&#9733; (Very Poor)</option>
