@@ -150,7 +150,7 @@
 					echo '<td><form onsubmit="return false;"><input type="submit" style="background-color: #A9A9A9; width: 100%" value="Completed"></form></td>';
 				}
 				
-				if ((!$custCompleted && !$workCompleted)){
+				if ((!$custCompleted && !$workCompleted && $type == "customer")){
 					echo '<td style="text-align: center;"><form action="removejob.php" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '">';
 					echo '<input type="submit" style="background-color: #00ACE6; width: auto;" value="X"></form></td>';
 				}
