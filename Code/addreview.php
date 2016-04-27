@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Hello!</title>
+		<title>VeriHandy</title>
 		<link rel="stylesheet" type="text/css" href="styles.css">
 		<link rel="icon" href="fav.png" type="image/png" sizes="16x16">
 	</head>
@@ -24,12 +24,18 @@
 	
 		if ($result){
 		    echo "Review Submitted!<br>";
+			$qry = "SELECT WorkerID FROM Jobs WHERE JobID='$jobID'";
+			$result2 = mysqli_query($link, $qry);
+			$row = mysqli_fetch_assoc($result2);
+			$worker = $row["WorkerID"];
+			$qry = "UPDATE Alerts SET Reviewed=1 WHERE UserID='$worker'";
+			$result3 = mysqli_query($link, $qry);
 	   	    echo '<script type="text/javascript">
 	   	    setTimeout(function(){window.location = "reviews.php"},2000)
 	   	    </script>';
 		}
 		else{
-		    echo 'Review sumission failed.';
+		    echo 'Review submission failed.';
 		}
 	}
 	elseif ($type == "worker"){
@@ -37,6 +43,12 @@
 		$result = mysqli_query($link, $qry);
 		if ($result){
 		    echo "Review Submitted!<br>";
+			$qry = "SELECT CustomerID FROM Jobs WHERE JobID='$jobID'";
+			$result2 = mysqli_query($link, $qry);
+			$row = mysqli_fetch_assoc($result2);
+			$customer = $row["CustomerID"];
+			$qry = "UPDATE Alerts SET Reviewed=1 WHERE UserID='$customer'";
+			$result3 = mysqli_query($link, $qry);
 	   	    echo '<script type="text/javascript">
 	   	    setTimeout(function(){window.location = "reviews.php"},2000)
 	   	    </script>';

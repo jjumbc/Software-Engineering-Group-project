@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>VeriHandy - Work on Job</title>
+		<title>VeriHandy - Accept Job</title>
 		<link rel="stylesheet" type="text/css" href="styles.css">
 		<link rel="icon" href="fav.png" type="image/png" sizes="16x16">
 	</head>

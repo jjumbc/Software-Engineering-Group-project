@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Hello!</title>
+		<title>VeriHandy</title>
 		<link rel="stylesheet" type="text/css" href="styles.css">
 		<link rel="icon" href="fav.png" type="image/png" sizes="16x16">
 	</head>

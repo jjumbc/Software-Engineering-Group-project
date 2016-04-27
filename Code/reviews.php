@@ -51,7 +51,7 @@
 			<input type="submit" name="submit" style="width: 25%;" value="Write Review"></form>';
 		}
 		else {
-			echo "No review has been submmitted yet.";
+			echo "No review has been submitted yet.";
 		}
 	}
 	echo "<br><h2>Worker Feedback</h2>";
