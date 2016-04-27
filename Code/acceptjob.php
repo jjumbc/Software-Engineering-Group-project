@@ -20,6 +20,12 @@
 	if ($result){
 		echo 'Job Accepted!';
 		echo '<script type="text/javascript">setTimeout(function(){window.location = "home.php"},2000)</script>';
+		$qry = "SELECT CustomerID FROM Jobs WHERE JobID='$jobID'";
+		$result2 = mysqli_query($link, $qry);
+		$row = mysqli_fetch_assoc($result2);
+		$customer = $row["CustomerID"];
+		$qry = "UPDATE Alerts SET Accepted=1 WHERE UserID='$customer'";
+		$result3 = mysqli_query($link, $qry);
 	}
 	else{
 		echo 'Job acceptance failed:' . mysqli_error($link);
