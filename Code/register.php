@@ -31,6 +31,9 @@
 	$row = mysqli_fetch_assoc($result);
 	$id = $row["UserID"];
 	
+	$qry = "INSERT INTO Alerts (UserID) VALUES ('$id')";
+	$result = mysqli_query($link, $qry);
+	
 	$qry = "INSERT INTO UserInfo (UserID,FirstName,LastName,Address1,Address2,City,ZipCode,State,EMail,PhoneNumber) VALUES ('$id', '$first', '$last', '$address1', '$address2', '$city', '$zip', '$state', '$email', '$tel')";
 	$result = mysqli_query($link, $qry);
 	if ($result) {

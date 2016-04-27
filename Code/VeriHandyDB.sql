@@ -132,6 +132,30 @@ LOCK TABLES `Users` WRITE;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+--
+-- Table structure for table `Alerts`
+--
+
+DROP TABLE IF EXISTS `Alerts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Alerts` (
+  `UserID` int(11) NOT NULL,
+  `Accepted` char(1) NOT NULL DEFAULT '0',
+  `Reviewed` char(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`UserID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Alerts`
+--
+
+LOCK TABLES `Alerts` WRITE;
+/*!40000 ALTER TABLE `Alerts` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Alerts` ENABLE KEYS */;
+UNLOCK TABLES;
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;

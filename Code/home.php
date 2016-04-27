@@ -7,40 +7,47 @@
 	</head>
 <body>
 <?php
-if (!isset($_COOKIE["UserID"])) {
-	echo '<script type="text/javascript">window.location = "index.php"</script>';
-}
+	require 'header.php';
 ?>
-<div id="bglayer">
-	<div style="overflow: auto;">
-		<a href="home.php"><img class="logo" src="site_logo_small.png" width="250"></a>
-		<?php
-			if ($_COOKIE["UserType"] == 1) {
-				echo '<a href="home.php"><div id="linkcomp">Profile Home</div></a>
-				<a href="joblist.php"><div id="linkcomp">Search Jobs</div></a>
-				<a href="create_job.php"><div id="linkcomp">Create New Job</div></a>
-				<a href="admin.php"><div id="linkcompadmin">Admin Panel</div></a>
-				<br><br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-			}
-			else {
-				echo '<a href="home.php"><div id="link">Profile Home</div></a>
-				<a href="joblist.php"><div id="link">Search Jobs</div></a>
-				<a href="create_job.php"><div id="link">Create New Job</div></a>
-				<br><br><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-			}
+<?php
+	$userID = $_COOKIE["UserID"];
+	require 'link.php';
 
-			if (isset($_COOKIE["UserName"])) {
-				echo "Hello, ";
-				echo $_COOKIE["UserName"];
-				echo "! ";
+	$qry = "SELECT Accepted,Reviewed FROM Alerts WHERE UserID='$userID'";
+	$result = mysqli_query($link, $qry);
+			if ($result && mysqli_num_rows($result) > 0) {
+				$show = 'none';
+				$row = mysqli_fetch_assoc($result);
+				$accepted = $row["Accepted"];
+				$reviewed = $row["Reviewed"];
+				if ($accepted) {
+					$show = 'block';
+					$str = 'Someone has accepted one of your jobs! Check it out below.';
+				}
+				if ($reviewed) {
+					$show = 'block';
+					$str = 'Someone has reviewed one of your jobs! Check it out below.';
+				}
+				if ($accepted && $reviewed)
+				{
+					$show = 'block';
+					$str = 'Someone has accepted one of your jobs! Check it out below.';
+					echo '<div id="notification" onclick="fade(this);" style="display: ' . $show . ';">';
+					echo $str;
+					echo '<div style="float: right;"><span style="color: #D02930;"><b>X</b></span></div></div><br>';
+					$str = 'Someone has reviewed one of your jobs! Check it out below.';
+				}
 			}
-		?>
-		<a href="logout.php">Log Out</a>
-	</div>
-</div>
-<br>
-<br>
-
+	echo '<div id="notification" onclick="fade(this);" style="display: ' . $show . ';">';
+	echo $str;
+	echo '<div style="float: right;"><span style="color: #D02930;"><b>X</b></span></div></div>';
+?>
+<script>
+	function fade(n) {
+		n.classList.toggle('fade');
+		setTimeout(function(){n.parentNode.removeChild(n)},1000);
+	}
+</script>
 <div id="bglayer">
 <h2>Open Jobs</h2>
 <?php
@@ -113,11 +120,11 @@ if (!isset($_COOKIE["UserID"])) {
 				}
 				
 				if (isset($workID)) {
-					echo '<td><form action="" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '"><input type="hidden" name="type" value="' . $type . '">';
 					if (($custCompleted == 1 && !$workCompleted && $type == "customer") || ($workCompleted == 1 && !$custCompleted && $type == "worker")) {
-						echo '<input type="submit" name="mark" style="width: 100%;" value="Pending"></form></td>';
+						echo '<td><form onsubmit="return false;"><input type="submit" name="mark" style="width: 100%;" value="Pending"></form></td>';
 					}
 					else {
+						echo '<td><form action="" method="POST"><input type="hidden" name="jobID" value="' . $jobID . '"><input type="hidden" name="type" value="' . $type . '">';
 						echo '<input type="submit" name="mark" style="width: 100%;" value="Mark Complete"></form></td>';
 					}
 				}

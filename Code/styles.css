@@ -79,6 +79,21 @@ input[type=submit]:active {
     margin: 20px 200px 0px 200px;
 }
 
+#notification {
+	border: 2px solid #ffe493;
+    background-color: #F2F2F2;
+    border-radius: 5px;
+	padding: 20px;
+	width: 50%;
+	margin:0 auto;
+	opacity: 1;
+	transition: opacity 1s;
+}
+
+#notification.fade {
+	opacity: 0;
+}
+
 #jobview {
     border: 2px solid #ffe493;
     background-color: #F2F2F2;
