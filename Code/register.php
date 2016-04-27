@@ -11,6 +11,7 @@
 <?php
 	$username = $_POST["user"];
 	$password = md5($_POST["pass"]);
+	$password2 = md5($_POST["pass2"]);
 	$first = $_POST["first"];
 	$last = $_POST["last"];
 	$address1 = $_POST["address1"];
@@ -21,6 +22,13 @@
 	$email = $_POST["email"];
 	$tel = $_POST["tel"];
 	require 'link.php';
+	
+	if ($password != $password2) {
+		echo 'Passwords do not match. Try Again.';
+		echo '<script type="text/javascript">
+		setTimeout(function(){window.location = "register.html"},1500);
+		</script>';
+	}
 
 	$qry = "INSERT INTO Users (UserName,Password) VALUES ('$username', '$password')";
 	$result = mysqli_query($link, $qry);

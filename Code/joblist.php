@@ -88,7 +88,7 @@
 							echo '<td>$', $value, '</td>';
 						}
 						elseif ($key == 4) {
-							$str = $value . "<br>(" . substr($distance,0,5) . " miles)";
+							$str = $value . "<br>(~" . substr($distance,0,5) . " miles)";
 							echo '<td>', $str, '</td>';
 						}
 						else {
