@@ -11,16 +11,15 @@
 ?>
 <div id="bglayer">
 <?php
+	require 'link.php';
 	$userID = $_COOKIE["UserID"];
 	$jobID = $_POST["jobID"];
     $type = $_POST["type"];
 	$rating = $_POST["starRating"];
 	$feedback = $_POST["feedback"];
-	
-	require 'link.php';
 
 	if($type == "customer"){
-		$qry = "INSERT INTO Reviews (JobId,CustomerRating,CustomerReview) VALUES ('$jobID','$rating','$feedback')";
+		$qry = "INSERT INTO Reviews (JobID,CustomerRating,CustomerReview) VALUES ('$jobID','$rating','$feedback') ON DUPLICATE KEY UPDATE CustomerRating='$rating', CustomerReview='$feedback'";
 		$result = mysqli_query($link, $qry);
 	
 		if ($result){
@@ -34,7 +33,7 @@
 		}
 	}
 	elseif ($type == "worker"){
-		$qry = "INSERT INTO Reviews (JobId,WorkerRating,WorkerReview) VALUES ('$jobID','$rating','$feedback')";
+		$qry = "INSERT INTO Reviews (JobID,WorkerRating,WorkerReview) VALUES ('$jobID','$rating','$feedback') ON DUPLICATE KEY UPDATE WorkerRating='$rating', WorkerReview='$feedback'";
 		$result = mysqli_query($link, $qry);
 		if ($result){
 		    echo "Review Submitted!<br>";
