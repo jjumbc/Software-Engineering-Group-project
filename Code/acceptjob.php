@@ -5,7 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="styles.css">
 		<link rel="icon" href="fav.png" type="image/png" sizes="16x16">
 	</head>
-<body background="bg.jpg">
+<body>
 <?php
 	require 'header.php';
 ?>

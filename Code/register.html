@@ -27,8 +27,11 @@
       <input type="text" id="box" name="address1" placeholder="Address (Line 1)" pattern="[1-9][0-9]{0,4} [A-Za-z- \.]+" required title="House number must precede street name"><br>
       <input type="text" id="box" name="address2" placeholder="Address (Line 2)"><br>
       <br>
-      <input type="text" id="box" class="c3" name="city" placeholder="City/Town" required> <select id="box" class="c4" name="state">
-        <option value="AL">
+      <input type="text" id="box" class="c3" name="city" placeholder="City/Town" required> <select id="box" class="c4" name="state" required>
+        <option value="" disabled selected>
+		State
+		</option>
+		<option value="AL">
           Alabama
         </option>
         <option value="AK">
