@@ -12,14 +12,14 @@
 ?>
 	<div id="login">
 		<form action="addjob.php" method="post">
-			<textarea id="box" style="height: 200px" name="description" maxlength="512" placeholder="Full Job Description" required></textarea><br><br>
-			<input type="number" id="box" style="width: 40%" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" name="price" placeholder="Job Price" required><br><br>
-			<input type="text" id="box" style="width: 65%"name="address" placeholder="Job Address" pattern="[1-9][0-9]{0,4} [A-Za-z- \.]+" required title="House number must precede street name"><br>
+			<textarea id="box" style="height: 200px" name="description" maxlength="512" placeholder="Full Job Description" required></textarea><br>
+			<input type="number" id="box" style="width: 30%" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" name="price" placeholder="Job Price" required><br><br>
+			<input type="text" id="box" style="width: 70%"name="address" placeholder="Job Address" pattern="[1-9][0-9]{0,4} [A-Za-z- \.]+" required title="House number must precede street name"><br>
 			<input type="text" id="box" style="width: 40%" name="zip" placeholder="Zip Code" pattern="[0-9]{5}"required title="Must be 5 digits"><br><br>
 			<u>Complete By:</u><br><br>
-			Date<br><input type="date" id="box" style="width: 60%" name="date" min="" max="" required><br>
-			Time<br><input type="time" id="box" style="width: 60%" name="time" min="06:00:00" max="23:59:59" required><br><br>
-			<input type="submit" value="Submit" id="submit">&nbsp;&nbsp;&nbsp;<a href="home.php">Cancel</a>
+			Date<br><input type="date" id="box" style="width: 30%" name="date" min="" max="" required><br>
+			Time<br><input type="time" id="box" style="width: 30%" name="time" min="06:00:00" max="23:59:59" required><br><br>
+			<input type="submit" value="Submit" id="submit" style="width: 15%">&nbsp;&nbsp;&nbsp;<a href="home.php">Cancel</a>
 		</form>
 		</div>
 	<script>

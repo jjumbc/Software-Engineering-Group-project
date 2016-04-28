@@ -11,18 +11,19 @@
 ?>
   <div id="login">
     <form action="editprofile.php" method="post">
-	  
-      <input type="password" id="box" name="pass" placeholder="Current Password" pattern=".{6,24}" required title="Password must be between 6 and 24 characters."><br><br>
-	  <input type="password" id="box" name="newPass" placeholder="New Password" pattern=".{6,24}" title="Password must be between 6 and 24 characters."><br>
-	  <input type="password" id="box" name="newPass2" placeholder="Confirm New Password" pattern=".{6,24}" title="Password must be between 6 and 24 characters."><br>
+	  <h2>Edit Profile</h2>
+	  <h4>Insert new information where desired.</h4><br>
+      <input type="password" id="box" name="pass" placeholder="Current Password (required)" style="width: 45%" pattern=".{6,24}" required title="Password must be between 6 and 24 characters."><br><br>
+	  <input type="password" id="box" name="newPass" placeholder="New Password" style="width: 55%" pattern=".{6,24}" title="Password must be between 6 and 24 characters."><br>
+	  <input type="password" id="box" name="newPass2" placeholder="Confirm New Password" style="width: 55%" pattern=".{6,24}" title="Password must be between 6 and 24 characters."><br>
 	  <br>
-      <input type="text" id="box" class="c1" name="first" placeholder="First Name" pattern="[A-Za-z-']+" title="Name must only be letters, dashes, and apostrophes.">
-      <input type="text" id="box" class="c2" name="last" placeholder="Last Name" pattern="[A-Za-z-']+" title="Name must only be letters, dashes, and apostrophes."><br>
+      <input type="text" id="box" name="first" placeholder="First Name" style="width: 49%" pattern="[A-Za-z-']+" title="Name must only be letters, dashes, and apostrophes.">
+      <input type="text" id="box" name="last" placeholder="Last Name" style="width: 50%" pattern="[A-Za-z-']+" title="Name must only be letters, dashes, and apostrophes."><br>
       <br>
       <input type="text" id="box" name="address1" placeholder="Address (Line 1)" pattern="[1-9][0-9]{0,4} [A-Za-z- \.]+" title="House number must precede street name"><br>
       <input type="text" id="box" name="address2" placeholder="Address (Line 2)"><br>
       <br>
-      <input type="text" id="box" class="c3" name="city" placeholder="City/Town"> <select id="box" class="c4" name="state">
+      <input type="text" id="box" name="city" placeholder="City/Town" style="width: 69%"> <select id="box" style="width: 30%" name="state">
         <option value="">
 		  State
 		</option>
@@ -190,5 +191,7 @@
       <input type="submit" value="Submit" id="submit">
     </form><br>
   </div>
+  <br>
+  <br>
 </body>
 </html>

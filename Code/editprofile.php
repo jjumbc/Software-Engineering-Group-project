@@ -9,7 +9,7 @@
 <?php
 	require 'header.php';
 ?>
-<div id="login">
+<div id="bglayer">
 <?php
 	$userID = $_COOKIE["UserID"];
 	$password = md5($_POST["pass"]);
@@ -48,80 +48,80 @@
 	else{
 		$updates = false;
 		if($first != ""){
-			echo 'First name, ';
+			echo 'First name updated.<br>';
 			$qry="UPDATE UserInfo SET FirstName='$first' WHERE UserID='$userID'";
 			setcookie("UserName", $first, time() + (86400 * 30), "/");
 			$result = mysqli_query($link, $qry);	
 			$updates = true;
 		}
 		if($last != ""){
-			echo 'Last name, ';
+			echo 'Last name updated.<br>';
 			$qry="UPDATE UserInfo SET LastName='$last' WHERE UserID='$userID'";
 			$result = mysqli_query($link, $qry);	
 			$updates = true;		
 		}
 		if($newPass != md5("")){
-			echo 'Password, ';
+			echo 'Password updated.<br>';
 			$qry="UPDATE Users SET Password='$newPass' WHERE UserID='$userID'";
 			$result = mysqli_query($link, $qry);	
 			$updates = true;
 		}
 		if($address1 != ""){
-			echo 'Address Line 1, ';
+			echo 'Address Line 1 updated.<br>';
 			$qry="UPDATE UserInfo SET Address1='$address1' WHERE UserID='$userID'";
 			$result = mysqli_query($link, $qry);	
 			$updates = true;		
 		}
 		if($address2 != ""){
-			echo 'Address Line 2, ';
+			echo 'Address Line 2 updated.<br>';
 			$qry="UPDATE UserInfo SET Address2='$address2' WHERE UserID='$userID'";
 			$result = mysqli_query($link, $qry);	
 			$updates = true;		
 		}
 		if($city != ""){
-			echo 'City, ';
+			echo 'City updated.<br>';
 			$qry="UPDATE UserInfo SET City='$city' WHERE UserID='$userID'";
 			$result = mysqli_query($link, $qry);	
 			$updates = true;		
 		}
 		if($state != ""){
-			echo 'State, ';
+			echo 'State updated.<br>';
 			$qry="UPDATE UserInfo SET State='$state' WHERE UserID='$userID'";
 			$result = mysqli_query($link, $qry);	
 			$updates = true;
 		}
 		if($zip != ""){
-			echo 'ZIP Code, ';
+			echo 'Zip Code updated.<br>';
 			$qry="UPDATE UserInfo SET ZipCode='$zip' WHERE UserID='$userID'";
 			$result = mysqli_query($link, $qry);	
 			$updates = true;		
 		}
 		if($tel != ""){
-			echo 'Phone number, ';
+			echo 'Phone number updated.<br>';
 			$qry="UPDATE UserInfo SET PhoneNumber='$tel' WHERE UserID='$userID'";
 			$result = mysqli_query($link, $qry);	
 			$updates = true;
 		}
 		if($email != ""){
-			echo 'Email, ';
+			echo 'Email updated.<br>';
 			$qry="UPDATE UserInfo SET Email='$email' WHERE UserID='$userID'";
 			$result = mysqli_query($link, $qry);	
 			$updates = true;		
 		}
 		if($updates) {
-			echo 'all updated. Redirecting to profile home.';	
-		}
-		else {
-			echo 'No information updated. Returning to profile.';
-		}
-		echo '<script type="text/javascript">
+			echo '<script type="text/javascript">
 			setTimeout(function(){window.location = "viewprofile.php"},1500);
 			</script>';
+		}
+		else {
+			echo '<script type="text/javascript">window.location = "viewprofile.php";</script>';
+		}
 	}
-	
-				
 	
 	mysqli_close($link);
 ?>
-	
+</div>
+<br>
+<br>
+</body>	
 </html>

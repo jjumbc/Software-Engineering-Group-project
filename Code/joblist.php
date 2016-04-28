@@ -61,6 +61,7 @@
 			  <option value="25">25 Miles</option>
 			  <option value="max">Unlimited</option>
 	</select>
+	<input type="submit" id="submit" value="Go" style="width: 5%; background-color: #00ACE6;">
 </form>
 <br>
 <?php

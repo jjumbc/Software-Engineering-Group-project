@@ -10,12 +10,12 @@
 	require 'header.php';
 ?>
 <div id="bglayer">
-<h2>User Profile</h2>
-<table style="width:100%">
+<h2>User Profile</h2><br>
+<table class="vert-table" style="border-collapse: collapse;">
 	<tr>
-		<th>Name:</th>
+		<th>Name</th>
 		
-		<th><?php
+		<td><?php
 			$username = $_COOKIE["UserName"];
 			$userID = $_COOKIE["UserID"];
 			echo $username;
@@ -29,11 +29,11 @@
 			echo $last;
 			
 			mysqli_close($link);
-		?></th>
+		?></td>
 	</tr>
 	<tr>
-		<th>Address:</th>
-		<th><?php
+		<th>Address</th>
+		<td><?php
 			$userID = $_COOKIE["UserID"];
 			
 			require 'link.php';
@@ -50,11 +50,11 @@
 			echo $last;
 			
 			mysqli_close($link);
-		?></th>
+		?></td>
 	</tr>
 	<tr>
-		<th>City:</th>
-		<th><?php
+		<th>City</th>
+		<td><?php
 			$userID = $_COOKIE["UserID"];
 			
 			require 'link.php';
@@ -65,11 +65,11 @@
 			echo $last;
 			
 			mysqli_close($link);
-		?></th>
+		?></td>
 	</tr>
 	<tr>
-		<th>State:</th>
-		<th><?php
+		<th>State</th>
+		<td><?php
 			$userID = $_COOKIE["UserID"];
 			
 			require 'link.php';
@@ -80,11 +80,11 @@
 			echo $last;
 			
 			mysqli_close($link);
-		?></th>
+		?></td>
 	</tr>
 	<tr>
-		<th>ZIP Code:</th>
-		<th><?php
+		<th>ZIP Code</th>
+		<td><?php
 			$userID = $_COOKIE["UserID"];
 			
 			require 'link.php';
@@ -95,11 +95,11 @@
 			echo $last;
 			
 			mysqli_close($link);
-		?></th>
+		?></td>
 	</tr>
 	<tr>
-		<th>Email:</th>
-		<th><?php
+		<th>Email</th>
+		<td><?php
 			$userID = $_COOKIE["UserID"];
 			
 			require 'link.php';
@@ -110,11 +110,11 @@
 			echo $last;
 			
 			mysqli_close($link);
-		?></th>
+		?></td>
 	</tr>
 	<tr>
-		<th>Phone Number:</th>
-		<th><?php
+		<th>Phone Number</th>
+		<td><?php
 			$userID = $_COOKIE["UserID"];
 			
 			require 'link.php';
@@ -125,9 +125,10 @@
 			echo $last;
 			
 			mysqli_close($link);
-		?></th>
+		?></td>
 	</tr>
 </table>
+<br>
 <a href="inputprofile.php"><div id="link">Edit Profile</div></a>
 <br><br><br>
 </div>
