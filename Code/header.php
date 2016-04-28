@@ -27,5 +27,5 @@
 		echo $_COOKIE["UserName"];
 		echo "! ";
 	}
-	echo '<a href="inputprofile.php">Edit Profile</a> <a href="logout.php">Log Out</a></div></div><br><br>';
+	echo '<a href="logout.php">Log Out</a></div></div><br><br>';
 ?>
