@@ -1,7 +1,7 @@
 # Section-1-Team-1
 Section-1-Team-1 Repository
 
-This repository is currently organized into 10 folders:
+This repository is currently organized into 9 folders:
 	
 	1.	Administrators Manual
 		
@@ -31,14 +31,10 @@ This repository is currently organized into 10 folders:
 			
 			Contains the Use Cases and System Requirements Document
 	
-	8.	Test Files
-			
-			Contains the Repository test files created by each of our team members, to test access to the repository
-	
-	9.	Testing Report
+	8.	Testing Report
 			
 			Contains the Testing Report Document
 	
-	10.	UI Design
+	9.	UI Design
 	
 			Contains the UI Design Document
