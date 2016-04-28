@@ -130,6 +130,7 @@
 </table>
 <br>
 <a href="inputprofile.php"><div id="link">Edit Profile</div></a>
+<a href="contactadmin.php"><div id="link" style="background-color: #00ACE6;">Contact Admin</div></a>
 <br><br><br>
 </div>
 </html>
