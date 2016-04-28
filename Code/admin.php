@@ -82,8 +82,8 @@
 					echo '<td>None</td>';
 				}
 
-				echo '<td><form action="banuser.php" method="POST"><input type="hidden" name="userID" value="' . $rowUserID . '">
-				<input type="submit" name="submit" style="width: 100%;" value="Ban This User"></form></td>';
+				echo '<td><form action="banuser.php" method="POST"><input type="hidden" name="userID" value="' . $rowUserID . '"><input type="hidden" name="ban" value="1">
+				<input type="submit" name="submit" style="width: 100%;" value="Ban User"></form></td>';
 			
 			echo '</tr>';
 		}
@@ -104,13 +104,15 @@
 	$result = mysqli_query($link, $qry);
 	if ($result && mysqli_num_rows($result) > 0) {
 		echo '<div class="nice-table"><table>';
-		echo '<tr><th>User ID</th><th>Username</th><th>First Name</th><th>Last Name</th></tr>';
+		echo '<tr><th>User ID</th><th>Username</th><th>First Name</th><th>Last Name</th><th>Unban User</th></tr>';
 		while($row = mysqli_fetch_row($result)) {
 			$rowUserID = $row[0];
 			echo '<tr>';
 			foreach($row as $key=>$value) {
 				echo '<td>', $value, '</td>';
 			}
+			echo '<td><form action="banuser.php" method="POST"><input type="hidden" name="userID" value="' . $rowUserID . '"><input type="hidden" name="ban" value="0">
+				<input type="submit" name="submit" style="width: 100%;" value="Unban User"></form></td>';
 			echo '</tr>';
 		}
 		echo '</table></div>';
@@ -121,9 +123,10 @@
 	
 	mysqli_close($link);
 ?>
-<br>
-<br>
-<br>
+<br><br><br>
 </div>
+<br>
+<br>
+<br>
 </body>
 </html>

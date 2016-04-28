@@ -29,7 +29,7 @@
 		setTimeout(function(){window.location = "register.html"},1500);
 		</script>';
 	}
-
+	else {
 	$qry = "INSERT INTO Users (UserName,Password) VALUES ('$username', '$password')";
 	$result = mysqli_query($link, $qry);
 	
@@ -57,6 +57,7 @@
 		echo '<script type="text/javascript">
 		setTimeout(function(){window.location = "register.html"},1500);
 		</script>';
+	}
 	}
 	mysqli_close($link);
 ?>

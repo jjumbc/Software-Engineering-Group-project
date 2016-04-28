@@ -12,8 +12,10 @@
 <div id="login">
 <?php
 	$userID = $_POST["userID"];
+	$ban = $_POST["ban"];
 	require 'link.php';
 
+	if ($ban == "1") {
 	$qry = "UPDATE Users SET Banned='1' WHERE UserID='$userID' AND NOT Type='1'";
 	$result = mysqli_query($link, $qry);
 
@@ -39,6 +41,19 @@
 	else {
 		echo 'Ban failed:' . mysqli_error($link);
 		echo '<script type="text/javascript">setTimeout(function(){window.location = "admin.php"},1500)</script>';
+	}
+	}
+	else {
+		$qry = "UPDATE Users SET Banned='0' WHERE UserID='$userID'";
+		$result = mysqli_query($link, $qry);
+		if ($result) {
+			echo 'User Unbanned!';
+			echo '<script type="text/javascript">setTimeout(function(){window.location = "admin.php"},1500)</script>';
+		}
+		else {
+			echo 'Unban failed:' . mysqli_error($link);
+			echo '<script type="text/javascript">setTimeout(function(){window.location = "admin.php"},1500)</script>';
+		}
 	}
 
 	mysqli_close($link);

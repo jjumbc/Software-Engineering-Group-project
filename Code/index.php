@@ -13,9 +13,9 @@
 	echo '<script type="text/javascript">window.location = "home.php"</script>';
 	}
 	?>
-		<div id="bglayer">
+		<div id="bglayer" style="margin: 20px 100px 0px 100px;">
 			<div style="overflow: auto;">
-				<img class="logo" src="site_logo_small.png" width="250">
+				<img src="site_logo_small.png" width="300">
 				<a href="register.html"><div id="link">Register</div></a>
 				<a href="login.html"><div id="link">Login</div></a>
 			</div>
