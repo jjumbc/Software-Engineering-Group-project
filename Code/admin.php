@@ -9,12 +9,38 @@
 <?php
 	require 'header.php';
 ?>
-<div id="bglayer">
-<h2>All Users</h2>
+<script>
+	function fade(n) {
+		n.classList.toggle('fade');
+		setTimeout(function(){n.parentNode.removeChild(n)},1000);
+	}
+</script>
 <?php
 	$userID = $_COOKIE["UserID"];
 	require 'link.php';
 	
+	$qry = "SELECT AdminAlert FROM Alerts WHERE UserID='$userID'";
+	$result = mysqli_query($link, $qry);
+			if ($result && mysqli_num_rows($result) > 0) {
+				$show = 'none';
+				$row = mysqli_fetch_assoc($result);
+				$alert = $row["AdminAlert"];
+				if ($alert) {
+					$show = 'block';
+					$str = 'A user has sent an e-mail to the admins!';
+					$qry = "UPDATE Alerts SET AdminAlert=0 WHERE UserID='$userID'";
+					$result2 = mysqli_query($link, $qry);
+				}
+			}
+			
+	echo '<div id="notification" onclick="fade(this);" style="display: ' . $show . ';">';
+	echo $str;
+	echo '<div style="float: right;"><span style="color: #D02930;"><b>X</b></span></div></div>';
+?>
+<div id="bglayer">
+<h2>All Users</h2>
+<?php
+
 	$qry="SELECT Users.UserID, Users.UserName, UserInfo.FirstName, UserInfo.LastName FROM Users JOIN UserInfo ON Users.UserID=UserInfo.UserID WHERE NOT(Users.UserID=$userID) AND NOT(Banned=1)";
 	$result = mysqli_query($link, $qry);
 	if ($result && mysqli_num_rows($result) > 0) {
