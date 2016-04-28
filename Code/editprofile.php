@@ -30,6 +30,13 @@
 	$result = mysqli_query($link, $qry);
 	$row = mysqli_fetch_assoc($result);
 
+<<<<<<< HEAD
+	$qry2="SELECT State FROM UserInfo WHERE UserID=$userID";
+	$result2 = mysqli_query($link, $qry2);
+	$row2 = mysqli_fetch_assoc($result2);
+
+=======
+>>>>>>> 0007d13d47b7854ca6ac96fe18b4a6b2af3ae145
 	$failure = false;
 	if ($row["Password"] !=  $password) {
 		echo 'Current Password is incorrect.<br>';
@@ -84,7 +91,11 @@
 			$result = mysqli_query($link, $qry);	
 			$updates = true;		
 		}
+<<<<<<< HEAD
+		if($state != $row2["State"]){
+=======
 		if($state != ""){
+>>>>>>> 0007d13d47b7854ca6ac96fe18b4a6b2af3ae145
 			echo 'State updated.<br>';
 			$qry="UPDATE UserInfo SET State='$state' WHERE UserID='$userID'";
 			$result = mysqli_query($link, $qry);	
