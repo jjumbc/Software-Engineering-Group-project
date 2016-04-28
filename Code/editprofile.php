@@ -60,7 +60,7 @@
 			$result = mysqli_query($link, $qry);	
 			$updates = true;		
 		}
-		if($newPass != ""){
+		if($newPass != md5("")){
 			echo 'Password, ';
 			$qry="UPDATE Users SET Password='$newPass' WHERE UserID='$userID'";
 			$result = mysqli_query($link, $qry);	
@@ -84,7 +84,7 @@
 			$result = mysqli_query($link, $qry);	
 			$updates = true;		
 		}
-		if($state != "" || $state != "State"){
+		if($state != ""){
 			echo 'State, ';
 			$qry="UPDATE UserInfo SET State='$state' WHERE UserID='$userID'";
 			$result = mysqli_query($link, $qry);	
