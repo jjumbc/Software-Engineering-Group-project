@@ -12,7 +12,6 @@ body {
     width: 100%;
 }
 
-<<<<<<< HEAD
 fieldset.group { 
   margin: 0; 
   padding: 0; 
@@ -28,8 +27,6 @@ fieldset.group legend {
   color: black; 
 }
 
-=======
->>>>>>> 0007d13d47b7854ca6ac96fe18b4a6b2af3ae145
 input:focus, textarea:focus{
 	border-color: #D02930;
 }
