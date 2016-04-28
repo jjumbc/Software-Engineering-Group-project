@@ -73,12 +73,14 @@
 	$qry="SELECT JobID, Description, Price, Date, ZipCode, Banned FROM Jobs JOIN Users ON CustomerID = UserID WHERE (WorkerID IS NULL) AND NOT (CustomerID = '$userID') AND NOT (Banned = 1) AND (Description LIKE '%$keyword%');";
 	$result = mysqli_query($link, $qry);
 	$count = 0;
+	$jobs = 0;
 	$printNoFound = false;
 	if (($result) && (mysqli_num_rows($result) > 0)) {
 		echo '<div class="nice-table"><table>';
 		echo '<tr><th>Job Description</th><th>Price</th><th>Date to Complete By</th><th>Location</th>';
 		echo '<th>Work On Job</th></tr>';
 		while($row = mysqli_fetch_row($result)) {
+			$jobs++;
 			$zip = $row[4];
 			$distance = getDistance($zip,$userZip);
 			if ($range == 'max' || $range >= $distance) {
@@ -104,7 +106,7 @@
 				$closed = false;
 			}
 			else {
-				if ($count == 0 && $printNoFound == false) {
+				if ($count == 0 && $printNoFound == false && $jobs == mysqli_num_rows($result)) {
 					echo '</table></div>';
 					$closed = true;
 					$printNoFound = true;
