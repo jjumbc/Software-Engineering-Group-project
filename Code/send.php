@@ -18,7 +18,7 @@
 	$subject = "Message from User #" . $userID;
 	echo 'Message Submitted!';
 	//but not really
-	$qry = "UPDATE Alerts, Users SET Alerts.AdminAlert='1' WHERE Users.Type='1'";
+	$qry = "UPDATE Alerts, Users SET Alerts.AdminAlert='1' WHERE Users.Type='1' AND Users.UserID=Alerts.UserID";
 	$result = mysqli_query($link, $qry);
 	echo '<script type="text/javascript">
 	   	    setTimeout(function(){window.location = "viewprofile.php"},1500)
