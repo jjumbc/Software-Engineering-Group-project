@@ -77,7 +77,7 @@
 	$userZip = $row["ZipCode"];
 	$userAddress = $row["Address1"];
 	$userAddress = $userAddress . ' ' . $userZip;
-	$qry="SELECT JobID, UserName, Description, Price, Date, ZipCode, Banned, Address FROM Jobs JOIN Users ON CustomerID = UserID WHERE (WorkerID IS NULL) AND NOT (CustomerID = '$userID') AND NOT (Banned = 1) AND (Description LIKE '%$keyword%');";
+	$qry="SELECT JobID, UserName, Description, Price, Date, ZipCode, Banned, Address FROM Jobs JOIN Users ON CustomerID = UserID WHERE (WorkerID IS NULL) AND NOT (CustomerID = '$userID') AND NOT (Banned = 1) AND (Description LIKE '%$keyword%') ORDER BY Date;";
 	$result = mysqli_query($link, $qry);
 	$count = 0;
 	$jobs = 0;

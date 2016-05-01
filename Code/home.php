@@ -61,12 +61,12 @@
 	$userID = $_COOKIE["UserID"];
 	require 'link.php';
 	
-	$qry="SELECT JobID,CustomerID,WorkerID,CustomerCompleted,WorkerCompleted,Description,Price,Date,Time,ZipCode FROM Jobs WHERE (CustomerID='$userID' OR WorkerID='$userID') AND (CustomerCompleted='0' OR WorkerCompleted='0')";
+	$qry="SELECT JobID,CustomerID,WorkerID,CustomerCompleted,WorkerCompleted,Description,Price,Date,Time,ZipCode FROM Jobs WHERE (CustomerID='$userID' OR WorkerID='$userID') AND (CustomerCompleted='0' OR WorkerCompleted='0') ORDER BY JobID";
 	$result = mysqli_query($link, $qry);
 	if ($result && mysqli_num_rows($result) > 0) {
 		echo '<div class="nice-table"><table>';
-		echo '<tr><th style="width: 10%;">User Type</th><th style="width: 10%;">Working With</th><th style="width: 40%;">Job Description</th><th>Price</th><th>Complete By</th><th>Time of Day</th>';
-		echo '<th>Contact Email</th><th>Mark as Complete</th><th>Remove Job</th></tr>';
+		echo '<tr><th style="width: 10%;">User Type</th><th style="width: 10%;">Working With</th><th style="width: 40%;">Job Description</th><th>Price</th><th>Complete By</th><th>At Time</th>';
+		echo '<th>Contact</th><th>Mark as Complete</th><th>Remove Job</th></tr>';
 		while($row = mysqli_fetch_row($result)) {
 				echo '<tr>';
 				foreach($row as $key=>$value) {
@@ -141,7 +141,12 @@
 							}
 							$result2 = mysqli_query($link, $qry);
 							$row = mysqli_fetch_row($result2);
-							$str = '<td><a href="mailto:' . $row[0] . '?Subject=VeriHandy%20Job" target="_blank">Send Email</a></td>';
+							if (isset($workID)){
+								$str = '<td><a href="mailto:' . $row[0] . '?Subject=VeriHandy%20Job" target="_blank">Send Email</a></td>';
+							}
+							else {
+								$str = '<td><a href="null" style="pointer-events: none; color: gray;">Send Email</a></td>';
+							}
 							echo $str;
 						}
 						else {
