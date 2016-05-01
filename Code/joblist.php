@@ -36,6 +36,7 @@
 		$geocodeTo = file_get_contents('http://maps.google.com/maps/api/geocode/json?address='.$formattedAddrTo.'&sensor=false');
 		$outputTo = json_decode($geocodeTo);
 		
+		if (is_object($outputFrom->results) && is_object($outputTo->results)) {
 		$latitudeFrom = $outputFrom->results[0]->geometry->location->lat;
 		$longitudeFrom = $outputFrom->results[0]->geometry->location->lng;
 		$latitudeTo = $outputTo->results[0]->geometry->location->lat;
@@ -47,6 +48,10 @@
 		$dist = rad2deg($dist);
 		$miles = $dist * 60 * 1.1515;
 		return $miles;
+		}
+		else {
+			return 0;
+		}
 }
 ?>
 
@@ -72,31 +77,53 @@
 	$userZip = $row["ZipCode"];
 	$userAddress = $row["Address1"];
 	$userAddress = $userAddress . ' ' . $userZip;
-	$qry="SELECT JobID, Description, Price, Date, ZipCode, Banned, Address FROM Jobs JOIN Users ON CustomerID = UserID WHERE (WorkerID IS NULL) AND NOT (CustomerID = '$userID') AND NOT (Banned = 1) AND (Description LIKE '%$keyword%');";
+	$qry="SELECT JobID, UserName, Description, Price, Date, ZipCode, Banned, Address FROM Jobs JOIN Users ON CustomerID = UserID WHERE (WorkerID IS NULL) AND NOT (CustomerID = '$userID') AND NOT (Banned = 1) AND (Description LIKE '%$keyword%');";
 	$result = mysqli_query($link, $qry);
 	$count = 0;
 	$jobs = 0;
 	$printNoFound = false;
 	if (($result) && (mysqli_num_rows($result) > 0)) {
 		echo '<div class="nice-table"><table>';
-		echo '<tr><th>Job Description</th><th>Price</th><th>Date to Complete By</th><th>Location</th>';
+		echo '<tr><th>User</th><th style="width: 40%">Job Description</th><th>Price</th><th>Date to Complete By</th><th>Location</th>';
 		echo '<th>Work On Job</th></tr>';
 		while($row = mysqli_fetch_row($result)) {
 			$jobs++;
-			$zip = $row[4];
-			$address = $row[6];
+			$zip = $row[5];
+			$address = $row[7];
 			$address = $address . ' ' . $zip;
 			$distance = getDistance($address,$userAddress);
 			if ($range == 'max' || $range >= $distance) {
 				$count++;
 				echo '<tr>';
 				foreach($row as $key=>$value) {
-					if ($key != 0 && $key < 5) {
-						if ($key == 2) {
+					if ($key != 0 && $key < 6) {
+						if ($key == 1) {
+							$qry2="SELECT UserID FROM Users WHERE UserName='$value'";
+							$result2 = mysqli_query($link, $qry2);
+							$row2 = mysqli_fetch_row($result2);
+							$customer = $row2[0];
+							$qry3="SELECT AVG(WorkerRating) FROM Reviews JOIN Jobs ON Reviews.JobID=Jobs.JobID WHERE CustomerID='$customer'";
+							$result3 = mysqli_query($link, $qry3);
+							$row3 = mysqli_fetch_row($result3);
+							if ($row3[0]) {
+								$str = $value . "<br>(" . substr($row3[0],0,3) . " / 5)";
+							}
+							else {
+								$str = $value;
+							}
+							echo '<td>', $str, '</td>';
+							
+						}
+						elseif ($key == 3) {
 							echo '<td>$', $value, '</td>';
 						}
-						elseif ($key == 4) {
-							$str = $value . "<br>(~" . substr($distance,0,5) . " miles)";
+						elseif ($key == 5) {
+							if ($distance != 0) {
+								$str = $value . "<br>(~" . substr($distance,0,5) . " miles)";
+							}
+							else {
+								$str = $value;
+							}
 							echo '<td>', $str, '</td>';
 						}
 						else {

@@ -66,7 +66,7 @@
 	if ($result && mysqli_num_rows($result) > 0) {
 		echo '<div class="nice-table"><table>';
 		echo '<tr><th style="width: 10%;">User Type</th><th style="width: 10%;">Working With</th><th style="width: 40%;">Job Description</th><th>Price</th><th>Complete By</th><th>Time of Day</th>';
-		echo '<th>Zip Code</th><th>Mark as Complete</th><th>Remove Job</th></tr>';
+		echo '<th>Contact Email</th><th>Mark as Complete</th><th>Remove Job</th></tr>';
 		while($row = mysqli_fetch_row($result)) {
 				echo '<tr>';
 				foreach($row as $key=>$value) {
@@ -131,6 +131,18 @@
 					elseif ($key > 4) {
 						if ($key == 6) {
 							echo '<td>$',$value,'</td>';
+						}
+						elseif ($key == 9){
+							if ($custID == $userID) {
+								$qry = "SELECT Email FROM UserInfo WHERE UserID='$workID'";
+							}
+							if ($workID == $userID) {
+								$qry = "SELECT Email FROM UserInfo WHERE UserID='$custID'";
+							}
+							$result2 = mysqli_query($link, $qry);
+							$row = mysqli_fetch_row($result2);
+							$str = '<td><a href="mailto:' . $row[0] . '?Subject=VeriHandy%20Job" target="_blank">Send Email</a></td>';
+							echo $str;
 						}
 						else {
 							echo '<td>',$value,'</td>';
