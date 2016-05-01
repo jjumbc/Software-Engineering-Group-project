@@ -9,6 +9,7 @@
 <?php
 	require 'header.php';
 ?>
+<div id="bglayer" style="padding: 0px 20px 0px 20px"><h3><a href="admin.php">Users</a>&nbsp;&nbsp;<a href="adminjobs.php">Jobs</a>&nbsp;&nbsp;<a href="adminmessages.php">Messages</a></h3></div>
 <script>
 	function fade(n) {
 		n.classList.toggle('fade');
@@ -29,8 +30,6 @@
 			if ($alert) {
 				$show = 'block';
 				$str = 'A user has sent an e-mail to the admins!';
-				$qry = "UPDATE Alerts SET AdminAlert=0 WHERE UserID='$userID'";
-				$result2 = mysqli_query($link, $qry);
 			}
 		}
 			
