@@ -13,8 +13,13 @@
   </style>
 </head>
 <body>
-<br>
-  <div style="text-align: center"><img src="site_logo.png" alt="Logo" width="500"></div>
+<div id="bglayer" style="margin: 20px 100px 0px 100px;">
+			<div style="overflow: auto;">
+				<a href="index.php"><img src="site_logo_small.png" width="300"></a>
+				<a href="register.html"><div id="link">Register</div></a>
+				<a href="login.html"><div id="link">Login</div></a>
+			</div>
+		</div>
   <div id="login">
     <form action="register.php" method="post">
       <input type="text" id="box" name="user" placeholder="User Name" pattern="[A-Za-z0-9-_\.]{3,24}" required title="Username must be between 3 and 24 characters, using letters, numbers, underscores, dashes, or periods."><br>
