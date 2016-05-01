@@ -130,7 +130,6 @@ LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 --
 -- Table structure for table `Alerts`
@@ -156,6 +155,30 @@ LOCK TABLES `Alerts` WRITE;
 /*!40000 ALTER TABLE `Alerts` DISABLE KEYS */;
 /*!40000 ALTER TABLE `Alerts` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `AdminMessages`
+--
+
+DROP TABLE IF EXISTS `AdminMessages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `AdminMessages` (
+  `UserID` int(11) NOT NULL,
+  `Message` varchar(512) DEFAULT NULL,
+  PRIMARY KEY (`UserID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `AdminMessages`
+--
+
+LOCK TABLES `AdminMessages` WRITE;
+/*!40000 ALTER TABLE `AdminMessages` DISABLE KEYS */;
+/*!40000 ALTER TABLE `AdminMessages` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
