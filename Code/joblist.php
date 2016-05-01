@@ -66,11 +66,13 @@
 <br>
 <?php
 
-	$qry="SELECT ZipCode FROM UserInfo WHERE UserID='$userID'";
+	$qry="SELECT Address1, ZipCode FROM UserInfo WHERE UserID='$userID'";
 	$result = mysqli_query($link, $qry);
 	$row = mysqli_fetch_assoc($result);
 	$userZip = $row["ZipCode"];
-	$qry="SELECT JobID, Description, Price, Date, ZipCode, Banned FROM Jobs JOIN Users ON CustomerID = UserID WHERE (WorkerID IS NULL) AND NOT (CustomerID = '$userID') AND NOT (Banned = 1) AND (Description LIKE '%$keyword%');";
+	$userAddress = $row["Address1"];
+	$userAddress = $userAddress . ' ' . $userZip;
+	$qry="SELECT JobID, Description, Price, Date, ZipCode, Banned, Address FROM Jobs JOIN Users ON CustomerID = UserID WHERE (WorkerID IS NULL) AND NOT (CustomerID = '$userID') AND NOT (Banned = 1) AND (Description LIKE '%$keyword%');";
 	$result = mysqli_query($link, $qry);
 	$count = 0;
 	$jobs = 0;
@@ -82,12 +84,14 @@
 		while($row = mysqli_fetch_row($result)) {
 			$jobs++;
 			$zip = $row[4];
-			$distance = getDistance($zip,$userZip);
+			$address = $row[6];
+			$address = $address . ' ' . $zip;
+			$distance = getDistance($address,$userAddress);
 			if ($range == 'max' || $range >= $distance) {
 				$count++;
 				echo '<tr>';
 				foreach($row as $key=>$value) {
-					if ($key != 0 && $key != 5) {
+					if ($key != 0 && $key < 5) {
 						if ($key == 2) {
 							echo '<td>$', $value, '</td>';
 						}

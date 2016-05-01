@@ -14,10 +14,9 @@
 	require 'link.php';
 	$userID = $_COOKIE["UserID"];
 	$message = $_POST["feedback"];
-	$message = wordwrap($message, 70, "\r\n");
-	$subject = "Message from User #" . $userID;
+	$qry = "INSERT INTO AdminMessages (Message, UserID) VALUES ('$message','$userID')";
+	$result = mysqli_query($link, $qry);
 	echo 'Message Submitted!';
-	//but not really
 	$qry = "UPDATE Alerts, Users SET Alerts.AdminAlert='1' WHERE Users.Type='1' AND Users.UserID=Alerts.UserID";
 	$result = mysqli_query($link, $qry);
 	echo '<script type="text/javascript">

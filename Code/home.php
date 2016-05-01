@@ -15,8 +15,9 @@
 
 	$qry = "SELECT Accepted,Reviewed FROM Alerts WHERE UserID='$userID'";
 	$result = mysqli_query($link, $qry);
+	$show = 'none';
+	$str = '';
 			if ($result && mysqli_num_rows($result) > 0) {
-				$show = 'none';
 				$row = mysqli_fetch_assoc($result);
 				$accepted = $row["Accepted"];
 				$reviewed = $row["Reviewed"];
@@ -91,7 +92,7 @@
 								$result3 = mysqli_query($link, $qry);
 								$row = mysqli_fetch_row($result3);
 								if ($row[0]) {
-									$str = $str . "<br> (" . substr($row[0],0,3) . " / 5)";
+									$str = $str . "<br>(" . substr($row[0],0,3) . " / 5)";
 								}
 							}
 							else {

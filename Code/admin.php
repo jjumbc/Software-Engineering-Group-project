@@ -21,17 +21,18 @@
 	
 	$qry = "SELECT AdminAlert FROM Alerts WHERE UserID='$userID'";
 	$result = mysqli_query($link, $qry);
-			if ($result && mysqli_num_rows($result) > 0) {
-				$show = 'none';
-				$row = mysqli_fetch_assoc($result);
-				$alert = $row["AdminAlert"];
-				if ($alert) {
-					$show = 'block';
-					$str = 'A user has sent an e-mail to the admins!';
-					$qry = "UPDATE Alerts SET AdminAlert=0 WHERE UserID='$userID'";
-					$result2 = mysqli_query($link, $qry);
-				}
+	$show = 'none';
+	$str = '';
+		if ($result && mysqli_num_rows($result) > 0) {
+			$row = mysqli_fetch_assoc($result);
+			$alert = $row["AdminAlert"];
+			if ($alert) {
+				$show = 'block';
+				$str = 'A user has sent an e-mail to the admins!';
+				$qry = "UPDATE Alerts SET AdminAlert=0 WHERE UserID='$userID'";
+				$result2 = mysqli_query($link, $qry);
 			}
+		}
 			
 	echo '<div id="notification" onclick="fade(this);" style="display: ' . $show . ';">';
 	echo $str;
