@@ -39,7 +39,7 @@
 		elseif ($customerStar == 4){
 			echo "&#9733;&#9733;&#9733;&#9733; (Good)";
 		}
-		elseif ($custmerStar == 5){
+		elseif ($customerStar == 5){
 			echo "&#9733;&#9733;&#9733;&#9733;&#9733; (Very Good)";
 		}
 		echo "<br><br>";
