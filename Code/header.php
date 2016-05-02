@@ -20,7 +20,7 @@
 		echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 	}
 	
-	echo '<br><div style="float: right; margin-right: 20px;">';
+	echo '<div style="float: right; margin-right: 20px;">';
 	if (isset($_COOKIE["UserName"])) {
 		echo "Hello, ";
 		echo $_COOKIE["UserName"];

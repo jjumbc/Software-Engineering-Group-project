@@ -266,7 +266,7 @@ input[type=submit]:active {
 img.logo {
 	display: inline-block;
 	width: 300px;
-	margin: 10px 0px 0px 80px;
+	margin: 10px 0px 0px 40px;
 }
 
 img.logo:hover {
