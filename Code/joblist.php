@@ -36,7 +36,6 @@
 		$geocodeTo = file_get_contents('http://maps.google.com/maps/api/geocode/json?address='.$formattedAddrTo.'&sensor=false');
 		$outputTo = json_decode($geocodeTo);
 		
-		if (is_object($outputFrom->results) && is_object($outputTo->results)) {
 		$latitudeFrom = $outputFrom->results[0]->geometry->location->lat;
 		$longitudeFrom = $outputFrom->results[0]->geometry->location->lng;
 		$latitudeTo = $outputTo->results[0]->geometry->location->lat;
@@ -48,10 +47,6 @@
 		$dist = rad2deg($dist);
 		$miles = $dist * 60 * 1.1515;
 		return $miles;
-		}
-		else {
-			return 0;
-		}
 }
 ?>
 
@@ -118,12 +113,7 @@
 							echo '<td>$', $value, '</td>';
 						}
 						elseif ($key == 5) {
-							if ($distance != 0) {
-								$str = $value . "<br>(~" . substr($distance,0,5) . " miles)";
-							}
-							else {
-								$str = $value;
-							}
+							$str = $value . "<br>(~" . substr($distance,0,5) . " miles)";
 							echo '<td>', $str, '</td>';
 						}
 						else {

@@ -29,7 +29,7 @@
 			$alert = $row["AdminAlert"];
 			if ($alert) {
 				$show = 'block';
-				$str = 'A user has sent an e-mail to the admins!';
+				$str = 'A user has sent a message to the admins!';
 			}
 		}
 			

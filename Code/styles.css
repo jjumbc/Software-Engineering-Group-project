@@ -14,17 +14,19 @@ body {
 
 fieldset.group { 
   margin: 0; 
-  padding: 0; 
-  margin-bottom: 1.25em; 
-  padding: .125em; 
+  padding: 10px; 
+  margin-bottom: 1.25em;
+  border-radius: 5px;
 }
+
 fieldset.group legend { 
   margin: 0; 
-  padding: 0; 
+  padding: 10px; 
   font-weight: bold; 
   margin-left: 20px; 
   font-size: 100%; 
-  color: black; 
+  color: black;
+  border-radius: 5px;
 }
 
 input:focus, textarea:focus{

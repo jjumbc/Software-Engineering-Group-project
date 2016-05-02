@@ -13,8 +13,9 @@
     <form action="editprofile.php" method="post">
 	  <h2>Edit Profile</h2>
 	  <h4>Insert new information where desired.</h4>
-	  <h4>However, you must input your current password:</h4>
-      <input type="password" id="box" name="pass" placeholder="Current Password (required)" style="width: 45%" pattern=".{6,24}" required title="Password must be between 6 and 24 characters."><br><br><br>
+	  <br>
+	  <h5 style="margin: 0px 0px 3px 0px;">Input your current password:</h5>
+      <input type="password" id="box" name="pass" placeholder="Current Password (required)" style="width: 45%;" pattern=".{6,24}" required title="Password must be between 6 and 24 characters."><br><br>
       <fieldset class="group">
 	  <legend>Change Password</legend>
 	  <input type="password" id="box" name="newPass" placeholder="New Password" style="width: 55%" pattern=".{6,24}" title="Password must be between 6 and 24 characters."><br>
