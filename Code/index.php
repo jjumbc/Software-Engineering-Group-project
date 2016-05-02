@@ -15,7 +15,7 @@
 	?>
 		<div id="bglayer" style="margin: 20px 100px 0px 100px;">
 			<div style="overflow: auto;">
-				<img src="site_logo_small.png" width="300" style="margin-right: 40px>
+				<img src="site_logo_small.png" width="300" style="margin-left: 40px>
 				<a href="register.html"><div id="link">Register</div></a>
 				<a href="login.html"><div id="link">Login</div></a>
 			</div>
