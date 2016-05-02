@@ -9,7 +9,7 @@
 <?php
 	require 'header.php';
 ?>
-<div id="bglayer" style="padding: 0px 20px 0px 20px"><h3><a href="admin.php">Users</a>&nbsp;&nbsp;<a href="adminjobs.php">Jobs</a>&nbsp;&nbsp;<a href="adminmessages.php">Messages</a></h3></div>
+<div id="bglayer" style="padding: 0px 20px 0px 20px"><h3><a href="admin.php">Users</a>&nbsp;&nbsp;<a href="adminjobs.php">Jobs</a>&nbsp;&nbsp;<a href="adminmessages.php">Messages</a></h3></div><br>
 <script>
 	function fade(n) {
 		n.classList.toggle('fade');
