@@ -10,14 +10,12 @@
 		echo '<a href="viewprofile.php"><div id="linkcomp">User Profile</div></a>
 		<a href="joblist.php"><div id="linkcomp">Search Jobs</div></a>
 		<a href="createjob.php"><div id="linkcomp">Create New Job</div></a>
-		<a href="admin.php"><div id="linkcompadmin">Admin Panel</div></a>';
-		echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+		<a href="admin.php"><div id="linkcompadmin">Admin Panel</div></a><br>';
 	}
 	else {
 		echo '<a href="viewprofile.php"><div id="link">User Profile</div></a>
 		<a href="joblist.php"><div id="link">Search Jobs</div></a>
-		<a href="createjob.php"><div id="link">Create New Job</div></a>';
-		echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+		<a href="createjob.php"><div id="link">Create New Job</div></a><br>';
 	}
 	
 	echo '<div style="float: right; margin-right: 20px;">';
