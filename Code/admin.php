@@ -38,7 +38,7 @@
 	echo '<div style="float: right;"><span style="color: #D02930;"><b>X</b></span></div></div>';
 ?>
 <div id="bglayer">
-<h2>All Users</h2>
+<h2>Users</h2>
 <?php
 
 	$qry="SELECT Users.UserID, Users.UserName, UserInfo.FirstName, UserInfo.LastName FROM Users JOIN UserInfo ON Users.UserID=UserInfo.UserID WHERE NOT(Users.UserID=$userID) AND NOT(Banned=1)";
