@@ -130,7 +130,16 @@
 </table>
 <br>
 <a href="inputprofile.php"><div id="link">Edit Profile</div></a>
-<a href="contactadmin.php"><div id="link" style="background-color: #00ACE6;">Contact Admin</div></a>
+<?php
+	$userID = $_COOKIE["UserID"];
+	require 'link.php';
+	$qry = "SELECT Type FROM Users WHERE UserID='$userID'";
+	$result=mysqli_query($link, $qry);
+	$row = mysqli_fetch_assoc($result);
+	if ($row["Type"] == 0) {
+		echo '<a href="contactadmin.php"><div id="link" style="background-color: #00ACE6;">Contact Admin</div></a>';
+	}
+?>
 <br><br><br>
 </div>
 </html>
