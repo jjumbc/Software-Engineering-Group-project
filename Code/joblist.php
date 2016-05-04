@@ -36,7 +36,7 @@
 		$geocodeTo = file_get_contents('http://maps.google.com/maps/api/geocode/json?address='.$formattedAddrTo.'&sensor=false');
 		$outputTo = json_decode($geocodeTo);
 		
-		if (is_object($outputFrom) && is_object($outputTo)) {
+		if (is_array($outputFrom->results) && is_array($outputTo->results)) {
 			$latitudeFrom = $outputFrom->results[0]->geometry->location->lat;
 			$longitudeFrom = $outputFrom->results[0]->geometry->location->lng;
 			$latitudeTo = $outputTo->results[0]->geometry->location->lat;
