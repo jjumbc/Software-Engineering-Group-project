@@ -137,7 +137,7 @@
 					$closed = true;
 					$printNoFound = true;
 					echo '<style>table,th,tr,td,div.nice-table { visibility: hidden; display: none; } </style>';
-					echo '<br>No jobs found in your area! :( Try increasing the distance of your search or generalizing the job description.<br>';
+					echo '<br>No jobs found in your area!<br>Try increasing the distance of your search or generalizing the job description.<br>';
 				}
 			}
 		}

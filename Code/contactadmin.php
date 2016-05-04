@@ -2,7 +2,6 @@
 <html>
 	<head>
 		<title>VeriHandy - Contact Admin</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="styles.css">
 		<link rel="icon" href="fav.png" type="image/png" sizes="16x16">
 	</head>
